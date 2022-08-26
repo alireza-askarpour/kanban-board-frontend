@@ -1,0 +1,49 @@
+.FormControl {
+  @apply relative;
+}
+
+.Input {
+  @apply w-full py-2 bg-white pl-4 pr-8 text-sm rounded-lg outline-none placeholder-gray-500 text-gray-800 transition duration-100 ease-in-out border border-gray-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600;
+}
+
+.FormControl > span {
+  @apply grid place-items-center absolute top-1/2 transform -translate-y-1/2;
+}
+
+.FormControl > span svg {
+  @apply text-gray-500 fill-gray-500;
+}
+
+/***** WHEN COMPONENT HAVE A ICON *****/
+.Icon .Input {
+  @apply pr-10;
+}
+.Icon > span {
+  @apply right-3;
+}
+
+/***** EYE ICON FOR PASSWORD *****/
+.Eye {
+  @apply absolute top-1/2 right-3 transform -translate-y-1/2;
+}
+.Eye > span svg {
+  @apply text-gray-500 fill-gray-500;
+}
+
+/***** STATUS - SUCCESS *****/
+.Success .Input {
+  @apply placeholder-green-600 text-green-600 border-green-600 focus:border-green-700 focus:ring-green-700;
+}
+.Success > span svg {
+  @apply text-green-600;
+  fill: #26ab5b;
+}
+
+/***** STATUS - ERROR *****/
+.Error .Input {
+  @apply placeholder-red-600 text-red-600 border-red-600 focus:border-red-600 focus:ring-red-600;
+}
+.Error > span svg {
+  @apply text-red-600;
+  fill: #f41e59;
+}
