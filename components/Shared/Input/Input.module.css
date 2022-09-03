@@ -3,7 +3,7 @@
 }
 
 .Input {
-  @apply w-full py-2 bg-white pl-4 pr-8 text-sm rounded-lg outline-none placeholder-gray-500 text-gray-800 transition duration-100 ease-in-out border border-gray-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600;
+  @apply w-full px-4 py-2 bg-white text-sm rounded-lg outline-none placeholder-gray-500 text-gray-800 transition duration-100 ease-in-out border border-gray-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600;
 }
 
 .FormControl > span {
@@ -16,7 +16,7 @@
 
 /***** WHEN COMPONENT HAVE A ICON *****/
 .Icon .Input {
-  @apply pr-10;
+  @apply pl-10;
 }
 .Icon > span {
   @apply right-3;

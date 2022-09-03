@@ -6,7 +6,7 @@ import { classNames } from "utils/classNames"
 import styles from "./Input.module.css"
 import Icon from "../Icon/Icon"
 
-export default function Input(props: IProps) {
+const Input = (props: IProps) => {
   const [inputType, setInputType] = useState(props.type || "text")
   const [showPassword, setShowPassword] = useState(false)
 
@@ -31,8 +31,7 @@ export default function Input(props: IProps) {
         className={classNames(styles.Input, props.inputClassName)}
         value={props.value}
         onChange={props.onChange}
-        onBlur={props.onBlur}
-        onFocus={props.onFocus}
+        {...props.register}
       />
 
       {props.icon}
@@ -53,3 +52,5 @@ export default function Input(props: IProps) {
     </div>
   )
 }
+
+export default Input

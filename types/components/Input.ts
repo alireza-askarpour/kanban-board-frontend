@@ -9,6 +9,7 @@ export interface IProps {
   disabled?: boolean
   icon?: any
   status?: "success" | "error"
+  register?: any
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void
