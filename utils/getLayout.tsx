@@ -6,7 +6,6 @@ import MainLayout from "components/Layouts/MainLayout"
 
 const getLayout = (pathname: string, children: ReactNode): JSX.Element => {
   if (authRoutes.includes(pathname)) return <AuthLayout children={children} />
-  else if (pathname === "/") return <>{children}</>
   else return <MainLayout children={children} />
 }
 
