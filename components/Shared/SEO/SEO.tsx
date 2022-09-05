@@ -5,7 +5,7 @@ import { IProps } from "types/components/SEO"
 const SEO = ({ title, description }: IProps) => {
   return (
     <Head>
-      <title> | {title}</title>
+      <title>Kanban | {title}</title>
       <meta name="description" content={description} />
     </Head>
   )
