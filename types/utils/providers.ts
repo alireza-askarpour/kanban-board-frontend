@@ -10,6 +10,8 @@ export enum types {
   UPDATE_PROFILE_FAILURE = "UPDATE_PROFILE_FAILURE",
 
   SET_BOARDS = "SET_BOARDS",
+  
+  SET_FAVOURITES = "SET_FAVOURITE",
 }
 
 export interface ActionProps {
