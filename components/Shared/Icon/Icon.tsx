@@ -4,7 +4,7 @@ import { icons } from "./icons"
 const colors = {
   black: "#171923",
   blue: "#048AFB",
-  gray: "#60637B",
+  gray: "#6d6d6d",
   green: "#21A73F",
   orange: "#F6AD55",
   purple: "#3346F8",
@@ -12,7 +12,7 @@ const colors = {
   white: "#ffffff",
 }
 
-export default function Icon({ name, size = 24, color = "black", className }: IIcon) {
+export default function Icon({ name, size = 24, color = "black", className, variant = "outline" }: IIcon) {
   const IconElement = icons[name]
 
   if (!icons[name]) {
@@ -31,7 +31,7 @@ export default function Icon({ name, size = 24, color = "black", className }: II
       viewBox="0 0 24 24"
       fill={fill}
     >
-      <IconElement />
+      <IconElement variant={variant} />
     </svg>
   )
 }

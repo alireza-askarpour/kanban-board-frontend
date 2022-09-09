@@ -8,6 +8,8 @@ import SettingsIcon from "components/Shared/Icon/Icons/Setting"
 import Sms from "./Icons/Sms"
 import User from "./Icons/User"
 import Lock from "./Icons/Lock"
+import Clock from "./Icons/Clock"
+import Star from "./Icons/Star"
 
 export const icons = {
   "eye-slash": EyeSlash,
@@ -20,6 +22,8 @@ export const icons = {
   settings: SettingsIcon,
   user: User,
   lock: Lock,
+  clock: Clock,
+  star: Star
 }
 
 export type IconName = keyof typeof icons
