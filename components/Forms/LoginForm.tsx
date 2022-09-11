@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import toast, { Toaster } from "react-hot-toast"
 import { useRouter } from "next/router"
@@ -13,6 +13,8 @@ import Icon from "components/Shared/Icon/Icon"
 
 import Logo from "public/logo.png"
 
+let timer
+
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false)
 
@@ -24,17 +26,25 @@ const LoginForm = () => {
     setIsLoading(true)
 
     const res = await accountService.loginUser(values)
-
+    console.log('LoginForm onSubmit')
     if (res.success) {
+      setIsLoading(false)
       localStorage.setItem("token", res.token)
       toast.success("Login was successful!")
-      setInterval(() => router.push("/"), 2000)
+      timer = setInterval(() => router.push("/"), 2000)
     } else {
+      setIsLoading(false)
       const errorMessage = res.error?.response?.data?.message
       if (errorMessage) toast.error(errorMessage)
       else toast.error("There is a problem on the server side")
     }
   }
+
+  useEffect(() => {
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
 
   return (
     <>
