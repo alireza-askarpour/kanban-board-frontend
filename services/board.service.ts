@@ -3,7 +3,7 @@ import { IBoard } from "types/schemas/Board"
 
 export const createBoard = async () => {
   try {
-    const { data } = await http.post("board/create")
+    const { data } = await http.post("boards/create")
     return { success: true, board: data }
   } catch (error) {
     return { success: false, error }

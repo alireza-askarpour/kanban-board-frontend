@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useRouter } from "next/router"
+
 import { useAccount } from "providers/Account/AccountProvider"
 import { authUtils } from "utils"
+import Sidebar from "./Sidebar"
 
 const MainLayout = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(true)
-
   const router = useRouter()
   const { handleSetUser } = useAccount()
 
@@ -16,13 +16,19 @@ const MainLayout = ({ children }) => {
         router.push("/login")
       } else {
         handleSetUser(user)
-        setIsLoading(false)
       }
     }
     checkAuth()
   }, [])
 
-  return isLoading ? <div>Loading...</div> : <div>{children}</div>
+  return (
+    <div>
+      <Sidebar />
+      <div className="max-h-screen overflow-y-auto ml-64 flex-1">
+        <div>{children}</div>
+      </div>
+    </div>
+  )
 }
 
 export default MainLayout
