@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import { useForm } from "react-hook-form"
 import toast, { Toaster } from "react-hot-toast"
@@ -12,6 +12,8 @@ import Input from "components/Shared/Input/Input"
 import Button from "components/Shared/Button/Button"
 
 import Logo from "public/logo.png"
+
+let timer
 
 const SignUpForm = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -27,7 +29,7 @@ const SignUpForm = () => {
     if (isValidating) return
     setIsLoading(true)
     toast.loading("Registering")
-    
+
     const res = await accountService.signUpUser(values)
 
     if (res.success) {
@@ -35,7 +37,7 @@ const SignUpForm = () => {
       localStorage.setItem("token", res.token)
       toast.dismiss()
       toast.success("Your account has been successfully created")
-      setInterval(() => router.push("/"), 2000)
+      timer = setInterval(() => router.push("/"), 2000)
     } else {
       toast.dismiss()
       setIsLoading(false)
@@ -48,6 +50,12 @@ const SignUpForm = () => {
       else toast.error("There is a problem on the server side")
     }
   }
+
+  useEffect(() => {
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
 
   return (
     <>
