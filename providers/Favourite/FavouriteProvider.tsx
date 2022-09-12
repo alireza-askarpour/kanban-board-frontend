@@ -5,10 +5,12 @@ import favouriteReducer from "./favouriteReducer"
 
 const initialState = {
   favourites: [],
-  handleSetFavourites: (favourites) => {},
 }
 
-const initialValue = {}
+const initialValue = {
+  favourites: [],
+  handleSetFavourites: (favourites) => {},
+}
 
 const FavouriteContext = createContext(initialValue)
 
