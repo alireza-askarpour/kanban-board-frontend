@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import { useAccount } from "providers/Account/AccountProvider"
 import { authUtils } from "utils"
 import Sidebar from "./Sidebar"
+import AppLoadingView from "views/app/AppLoadingView"
 
 const MainLayout = ({ children }) => {
   const router = useRouter()
@@ -26,7 +27,7 @@ const MainLayout = ({ children }) => {
   }, [])
 
   return loading ? (
-    <div>Loading...</div>
+    <AppLoadingView />
   ) : (
     <div>
       <Sidebar />

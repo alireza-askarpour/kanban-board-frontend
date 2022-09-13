@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/router"
 import { authUtils } from "utils"
+import AppLoadingView from "views/app/AppLoadingView"
 
 const AuthLayout = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
@@ -15,7 +16,7 @@ const AuthLayout = ({ children }) => {
     checkAuth()
   }, [])
 
-  return isLoading ? <div>Loading...</div> : <div className="max-h-screen">{children}</div>
+  return isLoading ? <AppLoadingView /> : <div className="max-h-screen">{children}</div>
 }
 
 export default AuthLayout
