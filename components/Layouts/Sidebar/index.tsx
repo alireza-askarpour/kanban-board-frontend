@@ -13,8 +13,8 @@ import SidebarItems from "./SidebarItems"
 const Sidebar = () => {
   const router = useRouter()
   const { user } = useAccount()
-  const { favourites } = useFavourite()
   const { boards, handleSetBoards } = useBoard()
+  const { favourites, handleSetFavourites } = useFavourite()
 
   const boardId = router.query.board_id
 
@@ -32,6 +32,16 @@ const Sidebar = () => {
       router.push(`/boards/${boards[0]._id}`)
     }
   }, [boards.length, boardId])
+  
+  useEffect(() => {
+    const getFavourites = async () => {
+      const res = await boardServices.getFavouritesBoards()
+      if (res.success) {
+        handleSetFavourites(res.favourites)
+      } else toast.error("There is a problem on the server side")
+    }
+    getFavourites()
+  }, [])
 
   const handleLogout = () => {
     localStorage.removeItem("token")
@@ -46,6 +56,8 @@ const Sidebar = () => {
       router.push(`/boards/${res.board._id}`)
     } else toast.error("There is a problem on the server side")
   }
+
+  if (!user) return null
 
   return (
     <>
