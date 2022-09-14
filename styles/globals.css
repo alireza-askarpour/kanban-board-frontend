@@ -4,15 +4,24 @@
 @tailwind components;
 @tailwind utilities;
 
-.sidebar-scrollbar::-webkit-scrollbar {
+/***** SUCTOM  SCROLLBAR *****/
+::-webkit-scrollbar {
   @apply w-4 bg-[#e1e1e1];
 }
 
-.sidebar-scrollbar::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   @apply bg-[#e1e1e1];
 }
 
-.sidebar-scrollbar::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   border: 4px solid #e1e1e1;
   @apply rounded-full bg-[#a7a7ad];
+}
+
+/***** ANIMATIONS *****/
+@keyframes loading {
+  to {
+    opacity: 0.3;
+    transform: translate3d(0, -1rem, 0);
+  }
 }
