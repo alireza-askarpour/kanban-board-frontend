@@ -1,12 +1,14 @@
 import { ReactNode } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
+import { classNames } from "utils"
 import Backdrop from "./Backdrop"
 
 interface IProps {
   isOpen: boolean
   onClose: () => void
   children: ReactNode
+  className?: string
 }
 
 const dropIn = {
@@ -19,13 +21,14 @@ const dropIn = {
   },
 }
 
-const Modal = ({ isOpen, onClose, children }: IProps) => {
+const Modal = ({ isOpen, onClose, children, className }: IProps) => {
   return (
     <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
       {isOpen && (
         <Backdrop onClick={onClose}>
           <motion.div
-            className="p-8 bg-white rounded-lg shadow-lg space-y-4 m-auto max-w-[480px]"
+            onClick={(e) => e.stopPropagation()}
+            className={classNames("p-5 bg-white rounded-lg shadow-lg m-auto", className)}
             variants={dropIn}
             initial="hidden"
             animate="visible"
