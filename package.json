@@ -10,8 +10,11 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "framer-motion": "^7.3.5",
+    "moment": "^2.29.4",
     "next": "12.2.5",
     "react": "18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.34.2",
     "react-hot-toast": "^2.3.0"
@@ -20,6 +23,7 @@
     "@tailwindcss/line-clamp": "^0.4.2",
     "@types/node": "18.7.9",
     "@types/react": "18.0.17",
+    "@types/react-beautiful-dnd": "^13.1.2",
     "@types/react-dom": "18.0.6",
     "autoprefixer": "^10.4.8",
     "eslint": "8.22.0",

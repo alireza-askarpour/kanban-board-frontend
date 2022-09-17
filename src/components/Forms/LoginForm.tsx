@@ -26,7 +26,6 @@ const LoginForm = () => {
     setIsLoading(true)
 
     const res = await accountService.loginUser(values)
-    console.log('LoginForm onSubmit')
     if (res.success) {
       setIsLoading(false)
       localStorage.setItem("token", res.token)

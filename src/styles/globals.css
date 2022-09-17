@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/***** SUCTOM  SCROLLBAR *****/
+/***** CUSTOM SCROLLBAR *****/
 ::-webkit-scrollbar {
   @apply w-4 bg-[#e1e1e1];
 }

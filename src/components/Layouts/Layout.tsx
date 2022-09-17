@@ -1,5 +1,4 @@
 import { useRouter } from "next/router"
-
 import { getLayout } from "utils"
 
 const Layout = ({ children }) => {
