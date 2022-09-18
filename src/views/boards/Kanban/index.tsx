@@ -121,31 +121,29 @@ const Kanban = (props: any) => {
         <hr className="my-3" style={{ margin: "12px 0" }} />
 
         <DragDropContext onDragEnd={handleDragEnd}>
-          <section className="flex items-start w-full overflow-x-auto">
+          <section className="flex items-start w-full overflow-x-auto space-x-4">
             {data.map((section) => (
               <div key={section._id} className="w-80">
                 <Droppable key={section._id} droppableId={section._id}>
                   {(provided) => (
-                    <div ref={provided.innerRef} {...provided.droppableProps} className="w-80 p-3 mr-3 bg-green-200">
-                      <div className="flex items-center justify-between mb-3 p-3 bg-red-200">
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                      className="w-80 p-3 bg-gray-100 rounded-lg space-y-3 mb-4"
+                    >
+                      <div className="flex items-center justify-between py-2 px-3.5 bg-primary rounded-lg">
                         <input
                           type="text"
                           value={section.title}
-                          className="flex-1 outline-none"
+                          className="flex-1 outline-none bg-primary text-white placeholder:text-gray-300"
                           placeholder="Untitled"
                           onChange={(e) => handleUpdateSectionTitle(e, section._id)}
                         />
-                        <button
-                          className="rounded-full p-1 transition hover:bg-gray-100 active:bg-gray-200"
-                          onClick={() => handleCreateTask(section._id)}
-                        >
-                          <Icon name="add" color="gray" size={20} />
+                        <button onClick={() => handleCreateTask(section._id)} className="mr-1">
+                          <Icon name="add" color="white" size={25} />
                         </button>
-                        <button
-                          className="rounded-full p-1 transition hover:bg-red-100 active:bg-red-200"
-                          onClick={() => handleDeleteSection(section._id)}
-                        >
-                          <Icon name="trash" color="gray" size={20} />
+                        <button onClick={() => handleDeleteSection(section._id)}>
+                          <Icon name="trash" color="white" size={19} />
                         </button>
                       </div>
                       {/* tasks */}
@@ -157,9 +155,11 @@ const Kanban = (props: any) => {
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
                               onClick={() => setSelectedTask(task)}
-                              className="mb-3 p-3 bg-primary rounded-lg"
+                              className="p-3 bg-white text-gray-700 shadow-sm rounded-lg"
                             >
-                              <span className="line-clamp-1">{task.title === "" ? "Untitled" : task.title}</span>
+                              <span className="line-clamp-1 select-none">
+                                {task.title === "" ? "Untitled" : task.title}
+                              </span>
                             </div>
                           )}
                         </Draggable>
