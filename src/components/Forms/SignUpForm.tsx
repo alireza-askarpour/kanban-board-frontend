@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import toast, { Toaster } from "react-hot-toast"
 
-import { validateNotWhitespaceOnly } from "utils"
 import * as accountService from "services/account.service"
 import { USERNAME_PATTERN, EMAIL_PATTERN } from "constants/regex"
 
@@ -67,19 +66,6 @@ const SignUpForm = () => {
             <h1 className="text-2xl mb-6 font-medium text-gray-600">Sign up to Kanban</h1>
           </header>
           <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-            <Input
-              className="mb-3"
-              placeholder="Full Name"
-              register={register("fullname", { required: true, validate: validateNotWhitespaceOnly })}
-              icon={
-                <Icon
-                  name="user"
-                  size={20}
-                  color="gray"
-                  className="absolute transform -translate-y-1/2 top-1/2 left-3"
-                />
-              }
-            />
             <Input
               className="mb-3"
               placeholder="Username"

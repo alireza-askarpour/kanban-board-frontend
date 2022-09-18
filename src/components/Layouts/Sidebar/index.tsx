@@ -64,7 +64,7 @@ const Sidebar = () => {
       <aside className="sidebar-scrollbar w-64 h-screen fixed top-0 left-0 bottom-0 py-5 bg-gray-100 overflow-y-auto">
         {/* Sidebar heading */}
         <header className="flex items-center mb-5 px-3">
-          <h5 className="font-medium ml-1.5 mr-1.5 text-gray-700 line-clamp-1 flex-1">{user?.fullname}</h5>
+          <h5 className="font-medium ml-1.5 mr-1.5 text-gray-700 line-clamp-1 flex-1">{user?.username}</h5>
           <button className="cursor-pointer rounded-full ml-auto" onClick={handleLogout}>
             <Icon name="logout" size={22} color="gray" />
           </button>

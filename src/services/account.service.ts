@@ -1,6 +1,6 @@
 import http from "config/http"
 
-export const loginUser = async (user: { email: string, password: string }) => {
+export const loginUser = async (user: { email: string; password: string }) => {
   try {
     const { data } = await http.post("/auth/login", user)
     return { success: true, token: data.token }
@@ -9,7 +9,7 @@ export const loginUser = async (user: { email: string, password: string }) => {
   }
 }
 
-export const signUpUser = async (user: { fullname: string; password: string; username: string; email: string }) => {
+export const signUpUser = async (user: { password: string; username: string; email: string }) => {
   try {
     const { data } = await http.post("/auth/signup", user)
     return { success: true, token: data.token }
