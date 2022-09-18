@@ -21,13 +21,30 @@ const Board = () => {
   const { boards, handleSetBoards } = useBoard()
   const { favourites, handleSetFavourites } = useFavourite()
 
-  const [icon, setIcon] = useState("🔥")
+  const [icon, setIcon] = useState("")
   const [isFavourite, setIsFavourite] = useState(false)
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [sections, setSections] = useState([])
 
-  const onIconChange = () => {}
+  const handleIconChange = async (newIcon: string) => {
+    let temp = [...boards]
+    const index = temp.findIndex((e) => e._id === boardId)
+    temp[index] = { ...temp[index], icon: newIcon }
+
+    if (isFavourite) {
+      let tempFavourite = [...favourites]
+      const favouriteIndex = tempFavourite.findIndex((e) => e._id === boardId)
+      tempFavourite[favouriteIndex] = { ...tempFavourite[favouriteIndex], icon: newIcon }
+      handleSetFavourites(tempFavourite)
+    }
+
+    setIcon(newIcon)
+    handleSetBoards(temp)
+
+    const res = await boardService.updateBoard(boardId, { icon: newIcon })
+    if (!res.success) toast.error("There is a problem on the server side")
+  }
 
   const handleUpdateTitle = async (e: ChangeEvent<HTMLInputElement>) => {
     clearTimeout(timer)
@@ -133,7 +150,7 @@ const Board = () => {
         <section>
           <div>
             {/* emoji picker */}
-            {/* <EmojiPicker icon={icon} onChange={onIconChange} /> */}
+            <EmojiPicker icon={icon} onChange={handleIconChange} />
             <input
               value={title}
               placeholder="Untitled"

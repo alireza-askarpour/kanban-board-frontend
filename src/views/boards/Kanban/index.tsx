@@ -121,17 +121,17 @@ const Kanban = (props: any) => {
         <hr className="my-3" style={{ margin: "12px 0" }} />
 
         <DragDropContext onDragEnd={handleDragEnd}>
-          <section className="flex items-start w-80 overflow-x-auto">
+          <section className="flex items-start w-full overflow-x-auto">
             {data.map((section) => (
               <div key={section._id} className="w-80">
                 <Droppable key={section._id} droppableId={section._id}>
                   {(provided) => (
-                    <div ref={provided.innerRef} {...provided.droppableProps} className="w-80 p-3 mr-3">
-                      <div className="flex items-center justify-between mb-3 p-3 bg-red-500">
+                    <div ref={provided.innerRef} {...provided.droppableProps} className="w-80 p-3 mr-3 bg-green-200">
+                      <div className="flex items-center justify-between mb-3 p-3 bg-red-200">
                         <input
                           type="text"
                           value={section.title}
-                          className="flex-1  outline-none"
+                          className="flex-1 outline-none"
                           placeholder="Untitled"
                           onChange={(e) => handleUpdateSectionTitle(e, section._id)}
                         />
@@ -157,14 +157,9 @@ const Kanban = (props: any) => {
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
                               onClick={() => setSelectedTask(task)}
-                              // style={{ cursor: snapshot.isDragging ? "grab" : "pointer!important" }}
+                              className="mb-3 p-3 bg-primary rounded-lg"
                             >
-                              <p
-                                style={{ background: "orange", padding: "10px", borderRadius: "6px" }}
-                                className="bg-red-900"
-                              >
-                                {task.title === "" ? "Untitled" : task.title}
-                              </p>
+                              <span className="line-clamp-1">{task.title === "" ? "Untitled" : task.title}</span>
                             </div>
                           )}
                         </Draggable>
