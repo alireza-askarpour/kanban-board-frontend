@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
-import { useRouter } from "next/router"
+import { Outlet, useNavigate } from "react-router-dom"
 
 import { useAccount } from "providers/Account/AccountProvider"
 import { authUtils } from "utils"
+
 import Sidebar from "./Sidebar"
 import AppLoadingView from "views/app/AppLoadingView"
 
-const MainLayout = ({ children }) => {
-  const router = useRouter()
+const MainLayout = () => {
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(true)
 
   const { handleSetUser } = useAccount()
@@ -16,15 +17,14 @@ const MainLayout = ({ children }) => {
     const checkAuth = async () => {
       const user = await authUtils.isAuthenticated()
       if (!user) {
-        setLoading(false)
-        router.push("/login")
+        navigate("/login")
       } else {
-        setLoading(false)
         handleSetUser(user)
+        setLoading(false)
       }
     }
     checkAuth()
-  }, [])
+  }, [navigate])
 
   return loading ? (
     <AppLoadingView />
@@ -32,7 +32,9 @@ const MainLayout = ({ children }) => {
     <div>
       <Sidebar />
       <div className="max-h-screen overflow-y-auto ml-64 flex-1">
-        <div className="min-h-screen">{children}</div>
+        <div className="min-h-screen">
+          <Outlet />
+        </div>
       </div>
     </div>
   )

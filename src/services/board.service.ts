@@ -46,7 +46,7 @@ export const deleteBoard = async (id: string) => {
   }
 }
 
-export const updateBoard = async (id: string, board: IBoard) => {
+export const updateBoard = async (id: string, board: any) => {
   try {
     const { data } = await http.put(`boards/${id}`, board)
     return { success: true, board: data }

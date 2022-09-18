@@ -1,10 +1,7 @@
 const colors = require("tailwindcss/colors")
 
 module.exports = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx}",
-    "./src/components/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     colors: {
       ...colors,
@@ -14,11 +11,9 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ["Roboto", "Arial", "Helvetica", "sans-serif"]
-      }
+        sans: ["Roboto", "Arial", "Helvetica", "sans-serif"],
+      },
     },
   },
-  plugins: [
-    require('@tailwindcss/line-clamp')
-  ]
+  plugins: [require("@tailwindcss/line-clamp")],
 }

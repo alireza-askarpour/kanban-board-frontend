@@ -1,4 +1,4 @@
-import { useRouter } from "next/router"
+import { useParams } from "react-router-dom"
 import { ChangeEvent, useEffect, useState } from "react"
 import toast, { Toaster } from "react-hot-toast"
 import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd"
@@ -13,11 +13,10 @@ import TaskModal from "components/Modal/TaskModal"
 let timer
 
 const Kanban = (props: any) => {
+  const { boardId } = useParams()
+
   const [data, setData] = useState([])
   const [selectedTask, setSelectedTask] = useState<any>(null)
-
-  const router = useRouter()
-  const boardId = router.query.boardId
 
   useEffect(() => {
     setData(props.data)
@@ -160,7 +159,10 @@ const Kanban = (props: any) => {
                               onClick={() => setSelectedTask(task)}
                               // style={{ cursor: snapshot.isDragging ? "grab" : "pointer!important" }}
                             >
-                              <p style={{ background: "orange", padding: "10px", borderRadius: "6px" }} className="bg-red-900">
+                              <p
+                                style={{ background: "orange", padding: "10px", borderRadius: "6px" }}
+                                className="bg-red-900"
+                              >
                                 {task.title === "" ? "Untitled" : task.title}
                               </p>
                             </div>

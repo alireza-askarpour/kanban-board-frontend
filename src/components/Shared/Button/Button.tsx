@@ -1,4 +1,4 @@
-import Link from "next/link"
+import { Link } from "react-router-dom"
 
 import { IProps } from "types/components/Button"
 import { classNames } from "utils/classNames"
@@ -53,7 +53,7 @@ const Button = ({
         style={{ margin: 0 }}
         className={classNames(
           "absolute inset-0 grid place-items-center",
-          variant === "primary" ? "bg-primary" : "bg-white"
+          variant === "primary" ? "bg-primary" : "bg-white",
         )}
       >
         <svg
@@ -63,17 +63,10 @@ const Button = ({
             "animate-spin h-5 w-5",
             variant === "primary" && "text-white",
             variant === "secondary" && "text-primary",
-            variant === "outline-primary" && "text-primaryActive"
+            variant === "outline-primary" && "text-primaryActive",
           )}
         >
-          <circle
-            className="opacity-25"
-            cx="12"
-            cy="12"
-            r="10"
-            stroke="currentColor"
-            strokeWidth="4"
-          />
+          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
           <path
             className="opacity-75"
             fill="currentColor"
@@ -94,10 +87,8 @@ const Button = ({
   )
 
   return href ? (
-    <Link href={href}>
-      <a role="link" {...elementProps}>
-        {elementChildren}
-      </a>
+    <Link to={href} {...elementProps}>
+      {elementChildren}
     </Link>
   ) : (
     <button role="button" {...elementProps}>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import toast, { Toaster } from "react-hot-toast"
-import { useRouter } from "next/router"
+import { useNavigate } from 'react-router-dom'
 
 import * as accountService from "services/account.service"
 import { USERNAME_PATTERN } from "constants/regex"
@@ -11,14 +11,12 @@ import Input from "components/Shared/Input/Input"
 import Button from "components/Shared/Button/Button"
 import Icon from "components/Shared/Icon/Icon"
 
-import Logo from "public/logo.png"
-
 let timer
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false)
 
-  const router = useRouter()
+  const navigate = useNavigate()
   const { register, handleSubmit, formState: { isValidating } } = useForm()
 
   const onSubmit = async (values) => {
@@ -30,7 +28,7 @@ const LoginForm = () => {
       setIsLoading(false)
       localStorage.setItem("token", res.token)
       toast.success("Login was successful!")
-      timer = setInterval(() => router.push("/"), 2000)
+      timer = setInterval(() => navigate("/"), 2000)
     } else {
       setIsLoading(false)
       const errorMessage = res.error?.response?.data?.message
@@ -51,7 +49,7 @@ const LoginForm = () => {
         <div className="w-80">
           <header className="grid place-items-center">
             <div className="bg-[#151515] p-5 rounded-full w-20 h-20 mb-6">
-              <img src={Logo.src} alt="logo" className="w-full h-full select-none" />
+              <img src="/logo.png" alt="logo" className="w-full h-full select-none" />
             </div>
             <h1 className="text-2xl mb-6 font-medium text-gray-600">Sign in to Knaban</h1>
           </header>

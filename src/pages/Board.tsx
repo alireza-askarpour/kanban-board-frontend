@@ -1,5 +1,5 @@
-import { useRouter } from "next/router"
 import { ChangeEvent, useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
 import toast from "react-hot-toast"
 
 import { setInputHeight } from "utils"
@@ -7,7 +7,6 @@ import { useBoard } from "providers/Board/BoardProvider"
 import { useFavourite } from "providers/Favourite/FavouriteProvider"
 import * as boardService from "services/board.service"
 
-import Layout from "components/Layouts/Layout"
 import Icon from "components/Shared/Icon/Icon"
 import EmojiPicker from "components/Shared/EmojiPicker/EmojiPicker"
 import Kanban from "views/boards/Kanban"
@@ -16,10 +15,11 @@ let timer
 let timeout = 500
 
 const Board = () => {
-  const router = useRouter()
+  const navigate = useNavigate()
+  const { boardId } = useParams()
+
   const { boards, handleSetBoards } = useBoard()
   const { favourites, handleSetFavourites } = useFavourite()
-  const boardId = router.query.boardId
 
   const [icon, setIcon] = useState("🔥")
   const [isFavourite, setIsFavourite] = useState(false)
@@ -88,8 +88,8 @@ const Board = () => {
     }
 
     const newList = boards.filter((e) => e._id !== boardId)
-    if (newList.length === 0) router.push("/boards")
-    else router.push(`/boards/${newList[0]._id}`)
+    if (newList.length === 0) navigate("/boards")
+    else navigate(`/boards/${newList[0]._id}`)
     handleSetBoards(newList)
   }
 
@@ -112,7 +112,7 @@ const Board = () => {
   }, [])
 
   return (
-    <Layout>
+    <>
       <header className="flex items-center justify-between px-2 py-3">
         <button
           className="rounded-full p-2 transition hover:bg-gray-100 active:bg-gray-200"
@@ -133,7 +133,7 @@ const Board = () => {
         <section>
           <div>
             {/* emoji picker */}
-            <EmojiPicker icon={icon} onChange={onIconChange} />
+            {/* <EmojiPicker icon={icon} onChange={onIconChange} /> */}
             <input
               value={title}
               placeholder="Untitled"
@@ -150,7 +150,7 @@ const Board = () => {
         </section>
         <Kanban data={sections} boardId={boardId} />
       </section>
-    </Layout>
+    </>
   )
 }
 

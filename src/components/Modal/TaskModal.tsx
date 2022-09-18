@@ -1,13 +1,12 @@
-import { useRouter } from "next/router"
 import { ChangeEvent, useEffect, useState } from "react"
 import toast from "react-hot-toast"
 import moment from "moment"
 
 import * as taskService from "services/task.service"
+import { setInputHeight } from "utils"
 
 import Modal from "components/Shared/Modal/Modal"
 import Icon from "components/Shared/Icon/Icon"
-import { setInputHeight } from "utils"
 
 let timer
 let isModalClosed = false
@@ -21,7 +20,6 @@ interface IProps {
 }
 
 const TaskModal = (props: IProps) => {
-  const router = useRouter()
 
   const [task, setTask] = useState(props.task)
   const [title, setTitle] = useState("")

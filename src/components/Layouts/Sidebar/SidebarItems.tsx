@@ -1,20 +1,19 @@
-import Link from "next/link"
-import { useRouter } from "next/router"
+import { Link, useLocation } from "react-router-dom"
 
 import { classNames } from "utils"
 import { IBoard } from "types/schemas/Board"
 
 const SidebarItems = ({ listItems }: { listItems: IBoard[] }) => {
-  const router = useRouter()
+  const { pathname } = useLocation()
 
   return (
     <div className="px-3">
       {listItems.map((item: IBoard) => (
-        <Link href={`/boards/${item._id}`} key={item._id}>
+        <Link to={`/boards/${item._id}`} key={item._id}>
           <div
             className={classNames(
               "flex items-center px-2.5 py-1.5 rounded-md cursor-pointer",
-              `/boards/${item._id}` === router.asPath ? "text-white bg-primary" : "text-gray-700 ",
+              `/boards/${item._id}` === pathname ? "text-white bg-primary" : "text-gray-700 ",
             )}
           >
             <span className="text-sm">{item.icon}</span>

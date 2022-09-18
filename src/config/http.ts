@@ -3,7 +3,7 @@ import axios from "axios"
 const getToken = () => localStorage.getItem("token")
 
 const http = axios.create({
-  baseURL: process.env.API_URL,
+  baseURL: process.env.REACT_APP_API_URL,
 })
 
 http.interceptors.request.use(async (config) => {

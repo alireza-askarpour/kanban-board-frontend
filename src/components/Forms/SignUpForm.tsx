@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useRouter } from "next/router"
+import { useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import toast, { Toaster } from "react-hot-toast"
 
@@ -11,14 +11,13 @@ import Icon from "components/Shared/Icon/Icon"
 import Input from "components/Shared/Input/Input"
 import Button from "components/Shared/Button/Button"
 
-import Logo from "public/logo.png"
-
 let timer
 
 const SignUpForm = () => {
   const [isLoading, setIsLoading] = useState(false)
 
-  const router = useRouter()
+  const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
@@ -37,7 +36,7 @@ const SignUpForm = () => {
       localStorage.setItem("token", res.token)
       toast.dismiss()
       toast.success("Your account has been successfully created")
-      timer = setInterval(() => router.push("/"), 2000)
+      timer = setInterval(() => navigate("/"), 2000)
     } else {
       toast.dismiss()
       setIsLoading(false)
@@ -63,7 +62,7 @@ const SignUpForm = () => {
         <div className="w-80">
           <header className="grid place-items-center">
             <div className="bg-[#151515] p-5 rounded-full w-20 h-20 mb-6">
-              <img src={Logo.src} alt="logo" className="w-full h-full select-none" />
+              <img src="/logo.png" alt="logo" className="w-full h-full select-none" />
             </div>
             <h1 className="text-2xl mb-6 font-medium text-gray-600">Sign up to Kanban</h1>
           </header>

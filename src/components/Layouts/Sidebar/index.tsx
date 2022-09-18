@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useRouter } from "next/router"
+import { useNavigate, useParams } from 'react-router-dom'
 import toast, { Toaster } from "react-hot-toast"
 
 import * as boardServices from "services/board.service"
@@ -11,12 +11,12 @@ import Icon from "components/Shared/Icon/Icon"
 import SidebarItems from "./SidebarItems"
 
 const Sidebar = () => {
-  const router = useRouter()
+  const navigate = useNavigate()
+  const { boardId } = useParams()
   const { user } = useAccount()
   const { boards, handleSetBoards } = useBoard()
   const { favourites, handleSetFavourites } = useFavourite()
 
-  const boardId = router.query.board_id
 
   useEffect(() => {
     const getBoards = async () => {
@@ -29,7 +29,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     if (boards.length > 0 && boardId === undefined) {
-      router.push(`/boards/${boards[0]._id}`)
+      navigate(`/boards/${boards[0]._id}`)
     }
   }, [boards.length, boardId])
   
@@ -45,7 +45,7 @@ const Sidebar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token")
-    router.push("/login")
+    navigate("/login")
   }
 
   const handleAddBoard = async () => {
@@ -53,7 +53,7 @@ const Sidebar = () => {
     if (res.success) {
       const newList = [res.board, ...boards]
       handleSetBoards(newList)
-      router.push(`/boards/${res.board._id}`)
+      navigate(`/boards/${res.board._id}`)
     } else toast.error("There is a problem on the server side")
   }
 
