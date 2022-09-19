@@ -34,8 +34,10 @@ const Button = ({
       leftIcon || rightIcon ? "space-x-2 space-x-reverse" : null,
 
       variant === "primary" && "text-white bg-primary hover:bg-primaryHover active:bg-primaryActive",
+      variant === "danger" && "text-white bg-secondary hover:bg-secondaryHover active:bg-secondaryActive",
       variant === "secondary" && "text-gray-600 bg-white border-gray-200 hover:bg-gray-50 active:bg-gray-100",
       variant === "outline-primary" && "text-primary border-primary hover:bg-primary/5 active:bg-primary/10",
+      variant === "outline-danger" && "text-secondary border-secondary hover:bg-secondary/5 active:bg-secondary/10",
 
       size === "large" && "px-6 py-3.5",
       size === "medium" && "px-4 py-2",

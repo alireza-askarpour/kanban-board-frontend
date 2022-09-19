@@ -7,7 +7,7 @@ export interface IProps {
 
   type?: "button" | "submit" | "reset"
   size?: "small" | "medium" | "large"
-  variant?: "primary" | "secondary" | "outline-primary"
+  variant?: "primary" | "danger" | "secondary" | "outline-primary" | "outline-danger"
 
   children?: React.ReactNode
   rightIcon?: React.ReactNode
