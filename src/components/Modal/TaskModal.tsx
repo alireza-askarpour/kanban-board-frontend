@@ -7,6 +7,7 @@ import { setInputHeight } from "utils"
 
 import Modal from "components/Shared/Modal/Modal"
 import Icon from "components/Shared/Icon/Icon"
+import { Button, Input } from "components/Shared"
 
 let timer
 let isModalClosed = false
@@ -20,7 +21,6 @@ interface IProps {
 }
 
 const TaskModal = (props: IProps) => {
-
   const [task, setTask] = useState(props.task)
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
@@ -56,7 +56,6 @@ const TaskModal = (props: IProps) => {
 
   const handleUpdateContent = async (e: ChangeEvent<HTMLTextAreaElement>) => {
     clearTimeout(timer)
-    setInputHeight(e, "60px")
     const newContent = e.target.value
 
     if (!isModalClosed) {
@@ -80,27 +79,34 @@ const TaskModal = (props: IProps) => {
   }
 
   return (
-    <Modal isOpen={task !== null} onClose={onClose} className=" max-w-[480px]">
-      <div className="flex items-center justify-between">
+    <Modal isOpen={task !== null} onClose={onClose} className=" max-w-[530px]">
+      {/* <div className="flex items-center justify-between">
         <p className="font-semibold text-gray-500">{task !== null ? moment(task.createdAt).format("YYYY-MM-DD") : ""}</p>
         <button className="rounded-full p-2 transition hover:bg-red-100 active:bg-red-200" onClick={handleDeleteTask}>
           <Icon name="trash" color="red" size={20} />
         </button>
-      </div>
+      </div> */}
       <div className="space-y-3">
-        <input
-          type="text"
+        <Input
           value={title}
-          onChange={handleUpdateTitle}
           placeholder="Untitled"
-          className="outline-none border text-2xl w-full font-medium text-gray-700 placeholder:text-gray-400 px-4 py-2 rounded-md"
+          inputClassName="text-xl text-gray-600 placeholder:text-gray-400"
+          onChange={handleUpdateTitle}
         />
         <textarea
           value={content}
           placeholder="Add a description"
-          className="text-gray-800 overflow-hidden w-full resize-none px-4 py-2 text-base mb-4 outline-none h-[60px] border rounded-md"
+          className="text-gray-500 w-full h-40 resize-none py-2 px-4 text-base mb-4 outline-none border rounded-lg placeholder:font-light focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
           onChange={handleUpdateContent}
         ></textarea>
+      </div>
+      <div className="flex justify-end space-x-3 mt-3">
+        <Button variant="secondary" size="small" className="px-4">
+          Close
+        </Button>
+        <Button variant="danger" size="small" className="px-4" onClick={handleDeleteTask}>
+          Delete
+        </Button>
       </div>
     </Modal>
   )
