@@ -3,6 +3,7 @@ import { ChangeEvent, useEffect, useState } from "react"
 import toast, { Toaster } from "react-hot-toast"
 import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd"
 
+import { classNames } from "utils"
 import * as taskService from "services/task.service"
 import * as sectionService from "services/section.service"
 
@@ -129,7 +130,7 @@ const Kanban = (props: any) => {
                     <div
                       ref={provided.innerRef}
                       {...provided.droppableProps}
-                      className="w-80 p-3 bg-gray-100 rounded-lg space-y-3 mb-4"
+                      className="w-80 p-2.5 bg-gray-100 rounded-lg space-y-2.5 mb-4"
                     >
                       <div className="flex items-center justify-between py-2 px-3.5 bg-primary rounded-lg">
                         <input
@@ -155,7 +156,10 @@ const Kanban = (props: any) => {
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
                               onClick={() => setSelectedTask(task)}
-                              className="p-3 bg-white text-gray-700 shadow-sm rounded-lg"
+                              className={classNames(
+                                "p-3 bg-white text-gray-700 rounded-lg",
+                                snapshot.isDragging ? "shadow-2xl" : "shadow-sm",
+                              )}
                             >
                               <span className="line-clamp-1 select-none">
                                 {task.title === "" ? "Untitled" : task.title}
