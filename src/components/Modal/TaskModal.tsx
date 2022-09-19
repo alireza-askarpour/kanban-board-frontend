@@ -79,13 +79,7 @@ const TaskModal = (props: IProps) => {
   }
 
   return (
-    <Modal isOpen={task !== null} onClose={onClose} className=" max-w-[530px]">
-      {/* <div className="flex items-center justify-between">
-        <p className="font-semibold text-gray-500">{task !== null ? moment(task.createdAt).format("YYYY-MM-DD") : ""}</p>
-        <button className="rounded-full p-2 transition hover:bg-red-100 active:bg-red-200" onClick={handleDeleteTask}>
-          <Icon name="trash" color="red" size={20} />
-        </button>
-      </div> */}
+    <Modal isOpen={task !== null} onClose={onClose} className=" max-w-[500px]">
       <div className="space-y-3">
         <Input
           value={title}
