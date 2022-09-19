@@ -5,7 +5,7 @@ import toast, { Toaster } from "react-hot-toast"
 import * as boardService from "services/board.service"
 import { useBoard } from "providers/Board/BoardProvider"
 
-import Button from "components/Shared/Button/Button"
+import { Button, Helmet } from "components/Shared"
 
 const Home = () => {
   const [loading, setLoading] = useState(false)
@@ -28,14 +28,14 @@ const Home = () => {
   }
 
   return (
-    <>
+    <Helmet title="boards">
       <div className="h-screen grid place-items-center">
         <Button variant="outline-primary" loading={loading} onClick={handleCreateBoard}>
           Click here to create your first board
         </Button>
       </div>
       <Toaster position="top-right" />
-    </>
+    </Helmet>
   )
 }
 

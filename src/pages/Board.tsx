@@ -7,8 +7,7 @@ import { useBoard } from "providers/Board/BoardProvider"
 import { useFavourite } from "providers/Favourite/FavouriteProvider"
 import * as boardService from "services/board.service"
 
-import Icon from "components/Shared/Icon/Icon"
-import EmojiPicker from "components/Shared/EmojiPicker/EmojiPicker"
+import { Icon, EmojiPicker, Helmet } from "components/Shared"
 import Kanban from "views/boards/Kanban"
 
 let timer
@@ -129,7 +128,7 @@ const Board = () => {
   }, [])
 
   return (
-    <>
+    <Helmet title="board">
       <header className="flex items-center justify-between px-2 py-3">
         <button
           className="rounded-full p-2 transition hover:bg-gray-100 active:bg-gray-200"
@@ -167,7 +166,7 @@ const Board = () => {
         </section>
         <Kanban data={sections} boardId={boardId} />
       </section>
-    </>
+    </Helmet>
   )
 }
 
