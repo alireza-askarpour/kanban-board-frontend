@@ -11,6 +11,7 @@ import Lock from "./Icons/Lock"
 import Clock from "./Icons/Clock"
 import Star from "./Icons/Star"
 import Trash from "./Icons/Trash"
+import Menu from "./Icons/Menu"
 
 export const icons = {
   "eye-slash": EyeSlash,
@@ -26,6 +27,7 @@ export const icons = {
   clock: Clock,
   star: Star,
   trash: Trash,
+  menu: Menu,
 }
 
 export type IconName = keyof typeof icons

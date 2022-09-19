@@ -122,7 +122,7 @@ const Kanban = (props: any) => {
         <hr className="my-3" style={{ margin: "12px 0" }} />
 
         <DragDropContext onDragEnd={handleDragEnd}>
-          <section className="flex items-start w-full overflow-x-auto space-x-4">
+          <section className="flex items-start w-full overflow-x-auto space-x-4 min-h-[384px]">
             {data.map((section) => (
               <div key={section._id} className="w-80">
                 <Droppable key={section._id} droppableId={section._id}>

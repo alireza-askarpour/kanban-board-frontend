@@ -31,7 +31,7 @@ const MainLayout = () => {
   ) : (
     <div>
       <Sidebar />
-      <div className="max-h-screen overflow-y-auto ml-64 flex-1">
+      <div className="max-h-screen overflow-y-auto lg:ml-64 flex-1">
         <div className="min-h-screen">
           <Outlet />
         </div>

@@ -9,6 +9,8 @@ import * as boardService from "services/board.service"
 
 import { Icon, EmojiPicker, Helmet } from "components/Shared"
 import Kanban from "views/boards/Kanban"
+import SideDrawer from "components/Layouts/SideDrawer"
+import Sidebar from "components/Layouts/Sidebar"
 
 let timer
 let timeout = 500
@@ -25,6 +27,10 @@ const Board = () => {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [sections, setSections] = useState([])
+  const [openSideDrawer, setOpenSideDrawer] = useState(false)
+
+  const onOpenSideDrawer = () => setOpenSideDrawer(true)
+  const onCloseSideDrawer = () => setOpenSideDrawer(false)
 
   const handleIconChange = async (newIcon: string) => {
     let temp = [...boards]
@@ -121,15 +127,22 @@ const Board = () => {
       }
     }
     getBoards()
-  }, [boardId])
 
-  useEffect(() => {
     return () => clearTimeout(timer)
-  }, [])
+  }, [boardId])
 
   return (
     <Helmet title="board">
-      <header className="flex items-center justify-between px-2 py-3">
+      {/* Side Drawer */}
+      <SideDrawer show={openSideDrawer} hideMenu={onCloseSideDrawer} />
+      {/* Navbar Items */}
+      <header className="flex items-center px-2 py-3">
+        <button
+          className="rounded-full p-2 transition hover:bg-gray-100 active:bg-gray-200 lg:hidden"
+          onClick={onOpenSideDrawer}
+        >
+          <Icon name="menu" color="gray" />
+        </button>
         <button
           className="rounded-full p-2 transition hover:bg-gray-100 active:bg-gray-200"
           onClick={handleAddFavourite}
@@ -141,11 +154,15 @@ const Board = () => {
             color={isFavourite ? "orange" : "gray"}
           />
         </button>
-        <button className="rounded-full p-2 transition hover:bg-red-100 active:bg-red-200" onClick={handleDeleteBoard}>
+        <button
+          className="rounded-full p-2 transition hover:bg-red-100 active:bg-red-200 ml-auto"
+          onClick={handleDeleteBoard}
+        >
           <Icon name="trash" color="red" size={22} />
         </button>
       </header>
-      <section className="px-14 py-3">
+      {/* Kanban Section */}
+      <section className="px-4 sm:px-8 lg:px-14 py-3">
         <section>
           <div>
             {/* emoji picker */}

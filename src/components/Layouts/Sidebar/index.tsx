@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from "react-router-dom"
 import toast, { Toaster } from "react-hot-toast"
 
 import * as boardServices from "services/board.service"
@@ -9,14 +9,18 @@ import { useFavourite } from "providers/Favourite/FavouriteProvider"
 
 import Icon from "components/Shared/Icon/Icon"
 import SidebarItems from "./SidebarItems"
+import { classNames } from "utils"
 
-const Sidebar = () => {
+type IProps = {
+  sideDrawer?: boolean
+}
+
+const Sidebar = ({ sideDrawer }: IProps) => {
   const navigate = useNavigate()
   const { boardId } = useParams()
   const { user } = useAccount()
   const { boards, handleSetBoards } = useBoard()
   const { favourites, handleSetFavourites } = useFavourite()
-
 
   useEffect(() => {
     const getBoards = async () => {
@@ -32,7 +36,7 @@ const Sidebar = () => {
       navigate(`/boards/${boards[0]._id}`)
     }
   }, [boards.length, boardId])
-  
+
   useEffect(() => {
     const getFavourites = async () => {
       const res = await boardServices.getFavouritesBoards()
@@ -61,7 +65,12 @@ const Sidebar = () => {
 
   return (
     <>
-      <aside className="sidebar-scrollbar w-64 h-screen fixed top-0 left-0 bottom-0 py-5 bg-gray-100 overflow-y-auto">
+      <aside
+        className={classNames(
+          "w-64 h-screen py-5 bg-gray-100 overflow-y-auto",
+          !sideDrawer && "fixed top-0 left-0 bottom-0 hidden lg:block",
+        )}
+      >
         {/* Sidebar heading */}
         <header className="flex items-center mb-5 px-3">
           <h5 className="font-medium ml-1.5 mr-1.5 text-gray-700 line-clamp-1 flex-1">{user?.username}</h5>
