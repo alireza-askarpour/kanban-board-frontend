@@ -84,13 +84,13 @@ const TaskModal = (props: IProps) => {
         <Input
           value={title}
           placeholder="Untitled"
-          inputClassName="text-xl text-gray-600 placeholder:text-gray-400"
+          inputClassName="text-xl text-gray-600 placeholder:text-gray-400 bg-[#f5f5f5]"
           onChange={handleUpdateTitle}
         />
         <textarea
           value={content}
           placeholder="Add a description"
-          className="text-gray-500 w-full h-56 md:h-40 resize-none py-2 px-4 text-base mb-4 outline-none border rounded-lg placeholder:font-light focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
+          className="text-gray-500 bg-[#f5f5f5] w-full h-56 md:h-40 resize-none py-2 px-4 text-base mb-4 outline-none border rounded-lg placeholder:font-light focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
           onChange={handleUpdateContent}
         ></textarea>
       </div>
