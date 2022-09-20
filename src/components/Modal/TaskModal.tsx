@@ -79,7 +79,7 @@ const TaskModal = (props: IProps) => {
   }
 
   return (
-    <Modal isOpen={task !== null} onClose={onClose} className=" max-w-[500px]">
+    <Modal isOpen={task !== null} onClose={onClose} className="md:w-[500px]">
       <div className="space-y-3">
         <Input
           value={title}
@@ -90,12 +90,12 @@ const TaskModal = (props: IProps) => {
         <textarea
           value={content}
           placeholder="Add a description"
-          className="text-gray-500 w-full h-40 resize-none py-2 px-4 text-base mb-4 outline-none border rounded-lg placeholder:font-light focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
+          className="text-gray-500 w-full h-56 md:h-40 resize-none py-2 px-4 text-base mb-4 outline-none border rounded-lg placeholder:font-light focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
           onChange={handleUpdateContent}
         ></textarea>
       </div>
       <div className="flex justify-end space-x-3 mt-3">
-        <Button variant="secondary" size="small" className="px-4">
+        <Button variant="secondary" size="small" className="px-4" onClick={onClose}>
           Close
         </Button>
         <Button variant="danger" size="small" className="px-4" onClick={handleDeleteTask}>
