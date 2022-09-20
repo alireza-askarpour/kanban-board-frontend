@@ -28,7 +28,7 @@ const Modal = ({ isOpen, onClose, children, className }: IProps) => {
         <Backdrop onClick={onClose}>
           <motion.div
             onClick={(e) => e.stopPropagation()}
-            className={classNames("p-5 bg-white rounded-lg shadow-lg m-auto", className)}
+            className={classNames("px-5 pt-7 pb-5 bg-white rounded-lg shadow-lg m-auto", className)}
             variants={dropIn}
             initial="hidden"
             animate="visible"
