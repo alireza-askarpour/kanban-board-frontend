@@ -1,5 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import TextareaAutosize from "react-textarea-autosize"
 import toast from "react-hot-toast"
 
 import { setInputHeight } from "utils"
@@ -10,7 +11,6 @@ import * as boardService from "services/board.service"
 import { Icon, EmojiPicker, Helmet } from "components/Shared"
 import Kanban from "views/boards/Kanban"
 import SideDrawer from "components/Layouts/SideDrawer"
-import Sidebar from "components/Layouts/Sidebar"
 
 let timer
 let timeout = 500
@@ -173,12 +173,12 @@ const Board = () => {
               onChange={handleUpdateTitle}
               className="text-3xl font-bold text-gray-800 outline-none py-4 w-full"
             />
-            <textarea
+            <TextareaAutosize
               value={description}
-              placeholder="Add a description"
               className="text-gray-800 overflow-hidden w-full resize-none px-4 mb-4 text-sm outline-none h-[60px]"
+              placeholder="Add a description"
               onChange={handleUpdateDescription}
-            ></textarea>
+            />
           </div>
         </section>
         <Kanban data={sections} boardId={boardId} />
