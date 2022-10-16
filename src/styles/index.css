@@ -19,9 +19,8 @@
 }
 
 /***** ANIMATIONS *****/
-@keyframes loading {
-  to {
-    opacity: 0.3;
-    transform: translate3d(0, -1rem, 0);
+@keyframes loadingspin {
+  100% {
+    transform: rotate(360deg);
   }
 }
