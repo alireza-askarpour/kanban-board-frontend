@@ -7,6 +7,7 @@ import Login from "pages/Login"
 import Signup from "pages/Signup"
 import Home from "pages/Home"
 import Board from "pages/Board"
+import NotFound from "pages/NotFound"
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="boards" element={<Home />} />
           <Route path="boards/:boardId" element={<Board />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )
