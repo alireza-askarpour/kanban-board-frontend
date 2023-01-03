@@ -14,7 +14,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ["Roboto", "Arial", "Helvetica", "sans-serif"],
+        sans: ["SegoeUI", "Arial"],
       },
     },
   },
