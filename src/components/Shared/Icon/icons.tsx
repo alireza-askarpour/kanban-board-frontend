@@ -1,23 +1,28 @@
-import Add from "components/Shared/Icon/Icons/Add"
+import Plus from "components/Shared/Icon/Icons/Plus"
 import Eye from "components/Shared/Icon/Icons/Eye"
-import EyeSlash from "components/Shared/Icon/Icons/EyeSlash"
+import EyeOff from "components/Shared/Icon/Icons/EyeOff"
 import Folder from "components/Shared/Icon/Icons/Folder"
 import Login from "components/Shared/Icon/Icons/Login"
 import Logout from "components/Shared/Icon/Icons/Logout"
 import SettingsIcon from "components/Shared/Icon/Icons/Setting"
-import Sms from "./Icons/Sms"
+import Mail from "./Icons/Mail"
 import User from "./Icons/User"
 import Lock from "./Icons/Lock"
 import Clock from "./Icons/Clock"
 import Star from "./Icons/Star"
 import Trash from "./Icons/Trash"
 import Menu from "./Icons/Menu"
+import FileText from "./Icons/FileText"
+import ChevronRight from "./Icons/ChevronRight"
+import Search from "./Icons/Search"
 
 export const icons = {
-  "eye-slash": EyeSlash,
-  add: Add,
+  "eye-off": EyeOff,
+  "file-text": FileText,
+  "chevron-right": ChevronRight,
+  plus: Plus,
   eye: Eye,
-  sms: Sms,
+  mail: Mail,
   folder: Folder,
   login: Login,
   logout: Logout,
@@ -28,6 +33,7 @@ export const icons = {
   star: Star,
   trash: Trash,
   menu: Menu,
+  search: Search,
 }
 
 export type IconName = keyof typeof icons
