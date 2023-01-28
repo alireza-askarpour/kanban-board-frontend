@@ -29,14 +29,14 @@ const MainLayout = () => {
   return loading ? (
     <AppLoadingView />
   ) : (
-    <div>
+    <section className="flex">
       <Sidebar />
-      <div className="max-h-screen overflow-y-auto lg:ml-64 flex-1">
+      <div className="max-h-screen overflow-y-auto flex-1">
         <div className="min-h-screen">
           <Outlet />
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

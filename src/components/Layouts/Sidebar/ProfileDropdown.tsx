@@ -24,18 +24,18 @@ const ProfileDropdown = () => {
   }
 
   return (
-    <div className="relative">
+    <div className="relative bg-green-300 z-30">
       <div
         onClick={onOpen}
         className={classNames(
-          "w-full h-12 flex items-center mb-5 px-3 cursor-pointer transition-colors bg-[#fbfbfa] hover:bg-[#ebebea]",
+          "w-full h-12 flex items-center px-3 cursor-pointer transition-colors bg-[#fbfbfa] hover:bg-[#ebebea]",
           open && "pointer-events-none",
         )}
       >
         <Avatar size={24} variant="square" className="mr-2">
           {getFirstCharacter("S")}
         </Avatar>
-        <span className="font-medium mr-1.5 text-sm select-none text-gray-700 line-clamp-1 flex-1">
+        <span className="font-bold mr-1.5 text-sm select-none text-gray-700 line-clamp-1 flex-1">
           {"Setup Application" || user?.username}
         </span>
         <div className="w-3 h-3">
@@ -60,14 +60,14 @@ const ProfileDropdown = () => {
       </div>
 
       <motion.div
-        className="absolute top-10 left-3 min-w-[230px] z-20 mt-2 rounded-[4px] select-none bg-white dark:bg-dark-gray700 dark:text-white overflow-hidden border border-[#a6b1c2] dark:border-0 border-opacity-25"
+        className="fixed top-10 left-3 shadow overflow-hidden min-w-[250px] z-50 mt-2 rounded-[4px] select-none bg-white dark:bg-dark-gray700 dark:text-white"
         initial="hide"
         ref={ref}
         animate={open ? "show" : "hide"}
         transition={{ duration: 0.2, type: "tween" }}
         variants={{
-          show: { opacity: 1, display: "flex", y: 0 },
-          hide: { opacity: 0, y: 10, transitionEnd: { display: "none" } },
+          show: { opacity: 1, display: "flex", scale: 1 },
+          hide: { opacity: 0, scale: 0.93, transitionEnd: { display: "none" } },
         }}
       >
         <div className="w-full">
@@ -99,11 +99,19 @@ const ProfileDropdown = () => {
 
           <hr />
 
-          <div className="w-full flex flex-col items-start justify-center py-[6px] px-1 bg-[#fbfaf9]">
-            <button className="w-full text-left px-3 py-1.5 text-xs rounded-[4px] transition-colors text-[#37352fa6] hover:bg-[#ebebea]">
+          <div className="w-full flex flex-col items-start justify-center py-[6px] px-1">
+            <button
+              onClick={onClose}
+              className="w-full text-left px-3 py-1.5 text-xs rounded-[4px] transition-colors text-[#37352fa6] hover:bg-[#ebebea]"
+            >
               Add another account
             </button>
-            <button className="w-full text-left px-3 py-1.5 text-xs rounded-[4px] transition-colors text-[#37352fa6] hover:bg-[#ebebea]">Log out</button>
+            <button
+              onClick={onClose}
+              className="w-full text-left px-3 py-1.5 text-xs rounded-[4px] transition-colors text-[#37352fa6] hover:bg-[#ebebea]"
+            >
+              Log out
+            </button>
           </div>
         </div>
       </motion.div>
