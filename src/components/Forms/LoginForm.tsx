@@ -63,7 +63,7 @@ const LoginForm = () => {
                 <Icon
                   name="user"
                   size={20}
-                  color="gray"
+                  stroke="gray"
                   className="absolute transform -translate-y-1/2 top-1/2 left-3"
                 />
               }
@@ -78,7 +78,7 @@ const LoginForm = () => {
                 <Icon
                   name="lock"
                   size={20}
-                  color="gray"
+                  stroke="gray"
                   className="absolute transform -translate-y-1/2 top-1/2 left-3"
                 />
               }

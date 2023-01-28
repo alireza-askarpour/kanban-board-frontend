@@ -74,7 +74,7 @@ const SignUpForm = () => {
                 <Icon
                   name="user"
                   size={20}
-                  color="gray"
+                  stroke="gray"
                   className="absolute transform -translate-y-1/2 top-1/2 left-3"
                 />
               }
@@ -85,9 +85,9 @@ const SignUpForm = () => {
               register={register("email", { required: true, pattern: EMAIL_PATTERN })}
               icon={
                 <Icon
-                  name="sms"
+                  name="mail"
                   size={20}
-                  color="gray"
+                  stroke="gray"
                   className="absolute transform -translate-y-1/2 top-1/2 left-3"
                 />
               }
@@ -101,7 +101,7 @@ const SignUpForm = () => {
                 <Icon
                   name="lock"
                   size={20}
-                  color="gray"
+                  stroke="gray"
                   className="absolute transform -translate-y-1/2 top-1/2 left-3"
                 />
               }

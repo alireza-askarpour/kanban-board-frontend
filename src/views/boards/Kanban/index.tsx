@@ -141,10 +141,10 @@ const Kanban = (props: any) => {
                           onChange={(e) => handleUpdateSectionTitle(e, section._id)}
                         />
                         <button onClick={() => handleCreateTask(section._id)} className="mr-1">
-                          <Icon name="add" color="white" size={25} />
+                          <Icon name="plus" stroke="white" size={25} />
                         </button>
                         <button onClick={() => handleDeleteSection(section._id)}>
-                          <Icon name="trash" color="white" size={19} />
+                          <Icon name="trash" stroke="white" size={19} />
                         </button>
                       </div>
                       {/* tasks */}

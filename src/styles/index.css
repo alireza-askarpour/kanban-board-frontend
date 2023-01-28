@@ -49,18 +49,47 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply scroll-smooth text-gray-900 bg-white;
+  }
+
+  a,
+  button {
+    @apply select-none;
+  }
+
+  a {
+    @apply focus:outline-none;
+  }
+
+  button,
+  input {
+    @apply focus:outline-none;
+  }
+}
+
+@layer components {
+  .remove-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .shadow {
+    box-shadow: rgb(15 15 15 / 5%) 0px 0px 0px 1px, rgb(15 15 15 / 10%) 0px 3px 6px, rgb(15 15 15 / 20%) 0px 9px 24px;
+  }
+}
+
 /***** CUSTOM SCROLLBAR *****/
 ::-webkit-scrollbar {
-  @apply w-4 bg-[#e1e1e1];
+  @apply w-2.5 bg-[#edece9];
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-[#e1e1e1];
+  @apply bg-[#edece9];
 }
 
 ::-webkit-scrollbar-thumb {
-  border: 4px solid #e1e1e1;
-  @apply rounded-full bg-[#a7a7ad];
+  @apply bg-[#d3d1cb];
 }
 
 /***** ANIMATIONS *****/

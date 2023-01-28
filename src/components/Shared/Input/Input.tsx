@@ -42,11 +42,7 @@ const Input = (props: IProps) => {
           className={styles.Eye}
           onClick={handleTogglePassword}
         >
-          {showPassword ? (
-            <Icon name="eye" size={16} color="gray" />
-          ) : (
-            <Icon name="eye-slash" size={16} color="gray" />
-          )}
+          {showPassword ? <Icon name="eye" size={16} stroke="gray" /> : <Icon name="eye-off" size={16} stroke="gray" />}
         </button>
       )}
     </div>

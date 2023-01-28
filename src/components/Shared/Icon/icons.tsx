@@ -15,11 +15,13 @@ import Menu from "./Icons/Menu"
 import FileText from "./Icons/FileText"
 import ChevronRight from "./Icons/ChevronRight"
 import Search from "./Icons/Search"
+import MoreHorizontal from "./Icons/MoreHorizontal"
 
 export const icons = {
   "eye-off": EyeOff,
   "file-text": FileText,
   "chevron-right": ChevronRight,
+  "more-horizontal": MoreHorizontal,
   plus: Plus,
   eye: Eye,
   mail: Mail,

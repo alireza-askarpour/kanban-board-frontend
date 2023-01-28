@@ -141,7 +141,7 @@ const Board = () => {
           className="rounded-full p-2 transition hover:bg-gray-100 active:bg-gray-200 lg:hidden"
           onClick={onOpenSideDrawer}
         >
-          <Icon name="menu" color="gray" />
+          <Icon name="menu" stroke="gray" />
         </button>
         <button
           className="rounded-full p-2 transition hover:bg-gray-100 active:bg-gray-200"
@@ -150,15 +150,15 @@ const Board = () => {
           <Icon
             name="star"
             size={22}
-            variant={isFavourite ? "bold" : "outline"}
-            color={isFavourite ? "orange" : "gray"}
+            fill={isFavourite ? "orange" : undefined}
+            stroke={isFavourite ? "orange" : "gray"}
           />
         </button>
         <button
           className="rounded-full p-2 transition hover:bg-red-100 active:bg-red-200 ml-auto"
           onClick={handleDeleteBoard}
         >
-          <Icon name="trash" color="red" size={22} />
+          <Icon name="trash" stroke="red" size={22} />
         </button>
       </header>
       {/* Kanban Section */}
@@ -171,7 +171,7 @@ const Board = () => {
               value={title}
               placeholder="Untitled"
               onChange={handleUpdateTitle}
-              className="text-3xl font-bold text-gray-800 outline-none py-4 w-full"
+              className="text-3xl font-semibold text-gray-800 outline-none py-4 w-full"
             />
             <TextareaAutosize
               value={description}
