@@ -2,14 +2,10 @@ import { useState } from "react"
 import { classNames } from "utils"
 import SingleBoardItem from "./SingleBoardItem"
 import InsideBoardItem from "./InsideBoardItem"
-import { boardItems } from "constants/boardItems"
+import { boardItems } from "constants/sidebar/boardItems"
+import { IProps } from "types/components/BoardItems"
 
-interface IProps {
-  boards: any
-  heading: string
-}
-
-const BoardItems = ({ boards, heading }: IProps) => {
+const BoardItems = ({ heading }: IProps) => {
   const [hideItems, setHideItems] = useState(false)
   const toggleHideItems = () => setHideItems(!hideItems)
 
