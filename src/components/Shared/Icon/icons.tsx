@@ -16,12 +16,14 @@ import FileText from "./Icons/FileText"
 import ChevronRight from "./Icons/ChevronRight"
 import Search from "./Icons/Search"
 import MoreHorizontal from "./Icons/MoreHorizontal"
+import MessageSquare from "./Icons/MessageSquare"
 
 export const icons = {
   "eye-off": EyeOff,
   "file-text": FileText,
   "chevron-right": ChevronRight,
   "more-horizontal": MoreHorizontal,
+  "message-square": MessageSquare,
   plus: Plus,
   eye: Eye,
   mail: Mail,

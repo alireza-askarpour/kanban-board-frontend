@@ -1,12 +1,14 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
+
+import BoardItem from "./BoardItem"
+
 import { classNames } from "utils"
-import SingleBoardItem from "./SingleBoardItem"
-import InsideBoardItem from "./InsideBoardItem"
-import { boardItems } from "constants/sidebar/boardItems"
 import { IProps } from "types/components/BoardItems"
 
-const BoardItems = ({ heading }: IProps) => {
+const BoardItems = ({ heading, boards }: IProps) => {
   const [hideItems, setHideItems] = useState(false)
+
   const toggleHideItems = () => setHideItems(!hideItems)
 
   return (
@@ -20,14 +22,11 @@ const BoardItems = ({ heading }: IProps) => {
         </span>
       </div>
       {!hideItems &&
-        boardItems.map((item: any) => {
+        boards.map((item: any) => {
           return (
-            !item.responseTo && (
-              <div key={item._id}>
-                <SingleBoardItem board={item} boardId={item._id} />
-                <InsideBoardItem boards={boardItems} boardId={item._id} parentBoardId={item._id} />
-              </div>
-            )
+            <Link to={`/boards/${item._id}`} key={item._id}>
+              <BoardItem board={item} boardId={item._id} />
+            </Link>
           )
         })}
     </div>
