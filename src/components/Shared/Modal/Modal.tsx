@@ -23,7 +23,7 @@ const dropIn = {
 
 const Modal = ({ isOpen, onClose, children, className }: IProps) => {
   return (
-    <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
+    <AnimatePresence initial={false} mode='wait' onExitComplete={() => null}>
       {isOpen && (
         <Backdrop onClick={onClose}>
           <motion.div

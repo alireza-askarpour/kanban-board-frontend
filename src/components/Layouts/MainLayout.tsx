@@ -32,9 +32,7 @@ const MainLayout = ({ children }: any) => {
     <section className="flex">
       <Sidebar />
       <div className="max-h-screen overflow-y-auto flex-1">
-        <div className="min-h-screen">
-          {children}
-        </div>
+        <div className="min-h-screen">{children}</div>
       </div>
     </section>
   )

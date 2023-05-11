@@ -12,6 +12,7 @@ import { Icon, EmojiPicker, Helmet } from "../components/Shared"
 import Kanban from "../views/boards/Kanban"
 import SideDrawer from "../components/Layouts/SideDrawer"
 import MainLayout from "../components/Layouts/MainLayout"
+import Navbar from "../components/Layouts/Navbar"
 
 let timer: any
 let timeout = 500
@@ -138,31 +139,12 @@ const Board = () => {
         {/* Side Drawer */}
         <SideDrawer show={openSideDrawer} hideMenu={onCloseSideDrawer} />
         {/* Navbar Items */}
-        <header className="flex items-center px-2 py-3">
-          <button
-            className="rounded-full p-2 transition hover:bg-gray-100 active:bg-gray-200 lg:hidden"
-            onClick={onOpenSideDrawer}
-          >
-            <Icon name="menu" stroke="gray" />
-          </button>
-          <button
-            className="rounded-full p-2 transition hover:bg-gray-100 active:bg-gray-200"
-            onClick={handleAddFavourite}
-          >
-            <Icon
-              name="star"
-              size={22}
-              fill={isFavourite ? "orange" : undefined}
-              stroke={isFavourite ? "orange" : "gray"}
-            />
-          </button>
-          <button
-            className="rounded-full p-2 transition hover:bg-red-100 active:bg-red-200 ml-auto"
-            onClick={handleDeleteBoard}
-          >
-            <Icon name="trash" stroke="red" size={22} />
-          </button>
-        </header>
+        <Navbar
+          isFavourite={isFavourite}
+          onDeleteBoard={handleDeleteBoard}
+          onOpenSideDrawer={onOpenSideDrawer}
+          onAddFavourite={handleAddFavourite}
+        />
         {/* Kanban Section */}
         <section className="px-4 sm:px-8 lg:px-14 py-3">
           <section>

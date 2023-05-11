@@ -3,7 +3,7 @@ import { classNames } from "../../../utils"
 import { icons } from "./icons"
 
 const colors = {
-  black: "#171923",
+  black: "#37352fd9",
   blue: "#048AFB",
   gray: "#939393",
   green: "#21A73F",

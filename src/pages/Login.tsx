@@ -8,7 +8,6 @@ const Login = () => {
       <Helmet title="Login page">
         <div className="grid place-items-center min-h-screen bg-gray-50">
           <LoginForm />
-          test
         </div>
       </Helmet>
     </AuthLayout>
