@@ -3,16 +3,17 @@ import { useNavigate, useParams } from "react-router-dom"
 import TextareaAutosize from "react-textarea-autosize"
 import toast from "react-hot-toast"
 
-import { setInputHeight } from "utils"
-import { useBoard } from "providers/Board/BoardProvider"
-import { useFavourite } from "providers/Favourite/FavouriteProvider"
-import * as boardService from "services/board.service"
+import { setInputHeight } from "../utils"
+import { useBoard } from "../providers/Board/BoardProvider"
+import { useFavourite } from "../providers/Favourite/FavouriteProvider"
+import * as boardService from "../services/board.service"
 
-import { Icon, EmojiPicker, Helmet } from "components/Shared"
-import Kanban from "views/boards/Kanban"
-import SideDrawer from "components/Layouts/SideDrawer"
+import { Icon, EmojiPicker, Helmet } from "../components/Shared"
+import Kanban from "../views/boards/Kanban"
+import SideDrawer from "../components/Layouts/SideDrawer"
+import MainLayout from "../components/Layouts/MainLayout"
 
-let timer
+let timer: any
 let timeout = 500
 
 const Board = () => {
@@ -132,58 +133,60 @@ const Board = () => {
   }, [boardId])
 
   return (
-    <Helmet title="board">
-      {/* Side Drawer */}
-      <SideDrawer show={openSideDrawer} hideMenu={onCloseSideDrawer} />
-      {/* Navbar Items */}
-      <header className="flex items-center px-2 py-3">
-        <button
-          className="rounded-full p-2 transition hover:bg-gray-100 active:bg-gray-200 lg:hidden"
-          onClick={onOpenSideDrawer}
-        >
-          <Icon name="menu" stroke="gray" />
-        </button>
-        <button
-          className="rounded-full p-2 transition hover:bg-gray-100 active:bg-gray-200"
-          onClick={handleAddFavourite}
-        >
-          <Icon
-            name="star"
-            size={22}
-            fill={isFavourite ? "orange" : undefined}
-            stroke={isFavourite ? "orange" : "gray"}
-          />
-        </button>
-        <button
-          className="rounded-full p-2 transition hover:bg-red-100 active:bg-red-200 ml-auto"
-          onClick={handleDeleteBoard}
-        >
-          <Icon name="trash" stroke="red" size={22} />
-        </button>
-      </header>
-      {/* Kanban Section */}
-      <section className="px-4 sm:px-8 lg:px-14 py-3">
-        <section>
-          <div>
-            {/* emoji picker */}
-            <EmojiPicker icon={icon} onChange={handleIconChange} />
-            <input
-              value={title}
-              placeholder="Untitled"
-              onChange={handleUpdateTitle}
-              className="text-3xl font-semibold text-gray-800 outline-none py-4 w-full"
+    <MainLayout>
+      <Helmet title="board">
+        {/* Side Drawer */}
+        <SideDrawer show={openSideDrawer} hideMenu={onCloseSideDrawer} />
+        {/* Navbar Items */}
+        <header className="flex items-center px-2 py-3">
+          <button
+            className="rounded-full p-2 transition hover:bg-gray-100 active:bg-gray-200 lg:hidden"
+            onClick={onOpenSideDrawer}
+          >
+            <Icon name="menu" stroke="gray" />
+          </button>
+          <button
+            className="rounded-full p-2 transition hover:bg-gray-100 active:bg-gray-200"
+            onClick={handleAddFavourite}
+          >
+            <Icon
+              name="star"
+              size={22}
+              fill={isFavourite ? "orange" : undefined}
+              stroke={isFavourite ? "orange" : "gray"}
             />
-            <TextareaAutosize
-              value={description}
-              className="text-gray-800 overflow-hidden w-full resize-none px-4 mb-4 text-sm outline-none h-[60px]"
-              placeholder="Add a description"
-              onChange={handleUpdateDescription}
-            />
-          </div>
+          </button>
+          <button
+            className="rounded-full p-2 transition hover:bg-red-100 active:bg-red-200 ml-auto"
+            onClick={handleDeleteBoard}
+          >
+            <Icon name="trash" stroke="red" size={22} />
+          </button>
+        </header>
+        {/* Kanban Section */}
+        <section className="px-4 sm:px-8 lg:px-14 py-3">
+          <section>
+            <div>
+              {/* emoji picker */}
+              <EmojiPicker icon={icon} onChange={handleIconChange} />
+              <input
+                value={title}
+                placeholder="Untitled"
+                onChange={handleUpdateTitle}
+                className="text-3xl font-semibold text-gray-800 outline-none py-4 w-full"
+              />
+              <TextareaAutosize
+                value={description}
+                className="text-gray-800 overflow-hidden w-full resize-none px-4 mb-4 text-sm outline-none h-[60px]"
+                placeholder="Add a description"
+                onChange={handleUpdateDescription}
+              />
+            </div>
+          </section>
+          <Kanban data={sections} boardId={boardId} />
         </section>
-        <Kanban data={sections} boardId={boardId} />
-      </section>
-    </Helmet>
+      </Helmet>
+    </MainLayout>
   )
 }
 

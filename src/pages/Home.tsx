@@ -2,10 +2,11 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import toast, { Toaster } from "react-hot-toast"
 
-import * as boardService from "services/board.service"
-import { useBoard } from "providers/Board/BoardProvider"
+import * as boardService from "../services/board.service"
+import { useBoard } from "../providers/Board/BoardProvider"
 
-import { Button, Helmet } from "components/Shared"
+import { Button, Helmet } from "../components/Shared"
+import MainLayout from "../components/Layouts/MainLayout"
 
 const Home = () => {
   const [loading, setLoading] = useState(false)
@@ -28,14 +29,16 @@ const Home = () => {
   }
 
   return (
-    <Helmet title="boards">
-      <div className="h-screen grid place-items-center">
-        <Button variant="outline-primary" loading={loading} onClick={handleCreateBoard}>
-          Click here to create your first board
-        </Button>
-      </div>
-      <Toaster position="top-right" />
-    </Helmet>
+    <MainLayout>
+      <Helmet title="boards">
+        <div className="h-screen grid place-items-center">
+          <Button variant="outline-primary" loading={loading} onClick={handleCreateBoard}>
+            Click here to create your first board
+          </Button>
+        </div>
+        <Toaster position="top-right" />
+      </Helmet>
+    </MainLayout>
   )
 }
 

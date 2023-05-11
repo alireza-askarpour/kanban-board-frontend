@@ -1,5 +1,5 @@
-import { IIcon } from "types/components/Icon"
-import { classNames } from "utils"
+import { IIcon } from "../../../types/components/Icon"
+import { classNames } from "../../../utils"
 import { icons } from "./icons"
 
 const colors = {

@@ -3,15 +3,15 @@ import { ChangeEvent, useEffect, useState } from "react"
 import toast, { Toaster } from "react-hot-toast"
 import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd"
 
-import { classNames } from "utils"
-import * as taskService from "services/task.service"
-import * as sectionService from "services/section.service"
+import { classNames } from "../../../utils"
+import * as taskService from "../../../services/task.service"
+import * as sectionService from "../../../services/section.service"
 
-import Icon from "components/Shared/Icon/Icon"
-import Button from "components/Shared/Button/Button"
-import TaskModal from "components/Modal/TaskModal"
+import Icon from "../../../components/Shared/Icon/Icon"
+import Button from "../../../components/Shared/Button/Button"
+import TaskModal from "../../../components/Modal/TaskModal"
 
-let timer
+let timer: any
 
 const Kanban = (props: any) => {
   const { boardId } = useParams()
@@ -53,25 +53,25 @@ const Kanban = (props: any) => {
   const handleCreateTask = async (sectionId: string) => {
     const res = await taskService.craeteTask(boardId, { sectionId })
     if (res.success) {
-      const newData = [...data]
-      const index = newData.findIndex((e) => e._id === sectionId)
+      const newData: any = [...data]
+      const index = newData.findIndex((e: any) => e._id === sectionId)
       newData[index].tasks.unshift(res.task)
       setData(newData)
     } else toast.error("There is a problem on the server side")
   }
 
   const handleUpdateTask = (task: any) => {
-    const newData = [...data]
-    const sectionIndex = newData.findIndex((e) => e._id === task.section._id)
-    const taskIndex = newData[sectionIndex].tasks.findIndex((e) => e._id === task._id)
+    const newData: any = [...data]
+    const sectionIndex = newData.findIndex((e: any) => e._id === task.section._id)
+    const taskIndex = newData[sectionIndex].tasks.findIndex((e: any) => e._id === task._id)
     newData[sectionIndex].tasks[taskIndex] = task
     setData(newData)
   }
 
   const handleDeleteTask = (task: any) => {
-    const newData = [...data]
-    const sectionIndex = newData.findIndex((e) => e._id === task.section._id)
-    const taskIndex = newData[sectionIndex].tasks.findIndex((e) => e._id === task._id)
+    const newData: any = [...data]
+    const sectionIndex = newData.findIndex((e: any) => e._id === task.section._id)
+    const taskIndex = newData[sectionIndex].tasks.findIndex((e: any) => e._id === task._id)
     newData[sectionIndex].tasks.splice(taskIndex, 1)
     setData(newData)
   }

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
-import { IProps } from "types/components/IconButton"
-import { classNames } from "utils/classNames"
+import { IProps } from "../../../types/components/IconButton"
+import { classNames } from "../../../utils/classNames"
 
 const IconButton = (props: IProps) => {
   const size = props.size || "md"

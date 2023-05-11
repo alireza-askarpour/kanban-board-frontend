@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 
-import { Icon } from "components/Shared"
-import { classNames } from "utils"
+import { Icon } from "../../../../components/Shared"
+import { classNames } from "../../../../utils"
 
 interface IProps {
   boardId: string

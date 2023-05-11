@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
-import { Outlet, useNavigate } from "react-router-dom"
-import { authUtils } from "utils"
-import AppLoadingView from "views/app/AppLoadingView"
+import { useNavigate } from "react-router-dom"
+import { authUtils } from "../../utils"
+import AppLoadingView from "../../views/app/AppLoadingView"
 
-const AuthLayout = () => {
+const AuthLayout = ({ children }: any) => {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(true)
 
@@ -11,18 +11,12 @@ const AuthLayout = () => {
     const checkAuth = async () => {
       const isAuth = await authUtils.isAuthenticated()
       if (!isAuth) setIsLoading(false)
-      else navigate("/")
+      else navigate("/boards")
     }
     checkAuth()
   }, [navigate])
 
-  return isLoading ? (
-    <AppLoadingView />
-  ) : (
-    <div className="max-h-screen">
-      <Outlet />
-    </div>
-  )
+  return isLoading ? <AppLoadingView /> : <div className="max-h-screen">{children}</div>
 }
 
 export default AuthLayout

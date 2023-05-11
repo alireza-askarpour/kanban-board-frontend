@@ -1,5 +1,5 @@
-import { classNames } from "utils"
-import { IProps } from "types/components/Avatar"
+import { classNames } from "../../../utils"
+import { IProps } from "../../../types/components/Avatar"
 
 const Avatar = ({ variant, size, children, src, alt, className, fontSize }: IProps) => {
   return (

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react"
 import { motion } from 'framer-motion'
 import Picker from "emoji-picker-react"
 
-import { useOnClickOutside } from "hooks"
+import { useOnClickOutside } from "../../../hooks"
 
 const EmojiPicker = ({ icon, onChange }) => {
   const [selectedEmoji, setSelectedEmoji] = useState("")

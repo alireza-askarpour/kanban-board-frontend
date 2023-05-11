@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-import { classNames } from "utils"
+import { classNames } from "../../../utils"
 import Backdrop from "./Backdrop"
 
 interface IProps {

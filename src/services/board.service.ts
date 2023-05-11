@@ -1,5 +1,5 @@
-import http from "config/http"
-import { IBoard } from "types/schemas/Board"
+import http from "../config/http"
+import { IBoard } from "../types/schemas/Board"
 
 export const createBoard = async () => {
   try {

@@ -1,4 +1,4 @@
-import * as accountService from "services/account.service"
+import * as accountService from "../services/account.service"
 
 const isAuthenticated = async () => {
   const token = localStorage.getItem("token")

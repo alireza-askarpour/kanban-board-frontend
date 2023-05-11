@@ -2,15 +2,15 @@ import { useEffect } from "react"
 import toast, { Toaster } from "react-hot-toast"
 import { useNavigate, useParams } from "react-router-dom"
 
-import * as boardServices from "services/board.service"
-import { useBoard } from "providers/Board/BoardProvider"
-import { useAccount } from "providers/Account/AccountProvider"
-import { useFavourite } from "providers/Favourite/FavouriteProvider"
+import * as boardServices from "../../../services/board.service"
+import { useBoard } from "../../../providers/Board/BoardProvider"
+import { useAccount } from "../../../providers/Account/AccountProvider"
+import { useFavourite } from "../../../providers/Favourite/FavouriteProvider"
 
-import { classNames } from "utils"
+import { classNames } from "../../../utils"
 import BoardItems from "./BoardItems"
 import SidebarItem from "./SidebarItem"
-import Icon from "components/Shared/Icon/Icon"
+import Icon from "../../../components/Shared/Icon/Icon"
 import ProfileDropdown from "./ProfileDropdown"
 
 interface IProps {

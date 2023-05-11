@@ -1,4 +1,4 @@
-import { IconName } from "components/Shared/Icon/icons"
+import { IconName } from "../../components/Shared/Icon/icons"
 
 type colors = "black" | "blue" | "gray" | "green" | "orange" | "purple" | "red" | "white"
 

@@ -2,12 +2,12 @@ import { ChangeEvent, useEffect, useState } from "react"
 import toast from "react-hot-toast"
 import moment from "moment"
 
-import * as taskService from "services/task.service"
-import { setInputHeight } from "utils"
+import * as taskService from "../../services/task.service"
+import { setInputHeight } from "../../utils"
 
-import Modal from "components/Shared/Modal/Modal"
-import Icon from "components/Shared/Icon/Icon"
-import { Button, Input } from "components/Shared"
+import Modal from "../../components/Shared/Modal/Modal"
+import Icon from "../../components/Shared/Icon/Icon"
+import { Button, Input } from "../../components/Shared"
 
 let timer
 let isModalClosed = false

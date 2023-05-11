@@ -1,4 +1,4 @@
-import http from "config/http"
+import http from "../config/http"
 
 export const createSection = async (boardId: string) => {
   try {

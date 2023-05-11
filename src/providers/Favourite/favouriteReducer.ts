@@ -1,4 +1,4 @@
-import { ActionProps, types } from "types/utils/providers"
+import { ActionProps, types } from "../../types/utils/providers"
 
 const initialState = {
   favourites: [],

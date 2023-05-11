@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { IProps } from "types/components/Helmet"
+import { IProps } from "../../../types/components/Helmet"
 
 const Helmet = ({ title, children }: IProps) => {
   document.title = "Kanban | " + title

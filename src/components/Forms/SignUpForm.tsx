@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import toast, { Toaster } from "react-hot-toast"
 
-import * as accountService from "services/account.service"
-import { USERNAME_PATTERN, EMAIL_PATTERN } from "constants/regex"
+import * as accountService from "../../services/account.service"
+import { USERNAME_PATTERN, EMAIL_PATTERN } from "../../constants/regex"
 
-import Icon from "components/Shared/Icon/Icon"
-import Input from "components/Shared/Input/Input"
-import Button from "components/Shared/Button/Button"
+import Icon from "../../components/Shared/Icon/Icon"
+import Input from "../../components/Shared/Input/Input"
+import Button from "../../components/Shared/Button/Button"
 
-let timer
+let timer: any
 
 const SignUpForm = () => {
   const [isLoading, setIsLoading] = useState(false)

@@ -1,4 +1,4 @@
-import { IconName } from "components/Shared/Icon/icons"
+import { IconName } from "../../components/Shared/Icon/icons"
 
 export interface IProps {
   href?: string

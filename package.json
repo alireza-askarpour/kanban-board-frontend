@@ -1,56 +1,41 @@
 {
   "name": "kanban-board-frontend",
-  "version": "0.1.0",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
   "dependencies": {
-    "@tailwindcss/line-clamp": "^0.4.2",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.11.59",
-    "@types/react": "^18.0.20",
-    "@types/react-dom": "^18.0.6",
-    "axios": "^0.27.2",
-    "emoji-picker-react": "^3.6.2",
-    "framer-motion": "^7.3.5",
+    "axios": "^1.4.0",
+    "emoji-picker-react": "^4.4.9",
+    "framer-motion": "^10.12.10",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.34.2",
-    "react-hot-toast": "^2.3.0",
-    "react-router-dom": "^6.4.0",
-    "react-scripts": "5.0.1",
-    "react-textarea-autosize": "^8.3.4",
-    "typescript": "^4.8.3",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "react-hook-form": "^7.43.9",
+    "react-hot-toast": "^2.4.1",
+    "react-router-dom": "^6.11.1",
+    "react-textarea-autosize": "^8.4.1"
   },
   "devDependencies": {
-    "@types/react-beautiful-dnd": "^13.1.2",
-    "autoprefixer": "^10.4.11",
-    "postcss": "^8.4.16",
-    "tailwindcss": "^3.1.8"
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "@vitejs/plugin-react": "^4.0.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2"
   }
 }

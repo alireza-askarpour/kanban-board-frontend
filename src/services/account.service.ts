@@ -1,4 +1,4 @@
-import http from "config/http"
+import http from "../config/http"
 
 export const loginUser = async (user: { email: string; password: string }) => {
   try {

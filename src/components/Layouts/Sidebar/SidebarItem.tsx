@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
-import { Icon } from "components/Shared"
-import { IProps } from "types/components/SidebarItems"
+import { Icon } from "../../../components/Shared"
+import { IProps } from "../../../types/components/SidebarItems"
 
 const SidebarItems = ({ title, icon, href }: IProps) => {
   return href ? (

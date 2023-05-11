@@ -1,6 +1,6 @@
 import { createContext, useReducer, useContext } from "react"
-import { types } from "types/utils/providers"
-import { IBoard } from "types/schemas/Board"
+import { types } from "../../types/utils/providers"
+import { IBoard } from "../../types/schemas/Board"
 import favouriteReducer from "./favouriteReducer"
 
 const initialState = {

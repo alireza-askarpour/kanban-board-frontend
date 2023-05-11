@@ -1,4 +1,4 @@
-import http from "config/http"
+import http from "../config/http"
 
 export const craeteTask = async (boardId: string, sectionId: { sectionId: string }) => {
   try {

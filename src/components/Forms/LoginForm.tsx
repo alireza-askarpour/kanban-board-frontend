@@ -1,26 +1,30 @@
 import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import toast, { Toaster } from "react-hot-toast"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
 
-import * as accountService from "services/account.service"
-import { USERNAME_PATTERN } from "constants/regex"
-import { validateNotWhitespaceOnly } from "utils"
+import * as accountService from "../../services/account.service"
+import { USERNAME_PATTERN } from "../../constants/regex"
+import { validateNotWhitespaceOnly } from "../../utils"
 
-import Input from "components/Shared/Input/Input"
-import Button from "components/Shared/Button/Button"
-import Icon from "components/Shared/Icon/Icon"
+import Input from "../../components/Shared/Input/Input"
+import Button from "../../components/Shared/Button/Button"
+import Icon from "../../components/Shared/Icon/Icon"
 
-let timer
+let timer: any
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   const navigate = useNavigate()
-  const { register, handleSubmit, formState: { isValidating } } = useForm()
+  const {
+    register,
+    handleSubmit,
+    formState: { isValidating },
+  } = useForm()
 
   const onSubmit = async (values) => {
-    if (isValidating) return    
+    if (isValidating) return
     setIsLoading(true)
 
     const res = await accountService.loginUser(values)
@@ -28,7 +32,7 @@ const LoginForm = () => {
       setIsLoading(false)
       localStorage.setItem("token", res.token)
       toast.success("Login was successful!")
-      timer = setInterval(() => navigate("/"), 2000)
+      timer = setInterval(() => navigate("/boards"), 2000)
     } else {
       setIsLoading(false)
       const errorMessage = res.error?.response?.data?.message

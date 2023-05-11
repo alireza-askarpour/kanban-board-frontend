@@ -1,7 +1,7 @@
 import { useState } from "react"
 
-import { IProps } from "types/components/Input"
-import { classNames } from "utils/classNames"
+import { IProps } from "../../../types/components/Input"
+import { classNames } from "../../../utils/classNames"
 
 import styles from "./Input.module.css"
 import Icon from "../Icon/Icon"

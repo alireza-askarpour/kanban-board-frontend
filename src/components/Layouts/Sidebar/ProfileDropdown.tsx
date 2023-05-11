@@ -2,11 +2,11 @@ import { useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
 
-import { useOnClickOutside } from "hooks"
-import { Button, Icon } from "components/Shared"
-import { useAccount } from "providers/Account/AccountProvider"
-import { classNames, getFirstCharacter } from "utils"
-import Avatar from "components/Shared/Avatar/Avatar"
+import { useOnClickOutside } from "../../../hooks"
+import { Button, Icon } from "../../../components/Shared"
+import { useAccount } from "../../../providers/Account/AccountProvider"
+import { classNames, getFirstCharacter } from "../../../utils"
+import Avatar from "../../../components/Shared/Avatar/Avatar"
 
 const ProfileDropdown = () => {
   const [open, setOpen] = useState(false)

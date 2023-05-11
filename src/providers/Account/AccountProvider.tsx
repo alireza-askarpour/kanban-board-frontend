@@ -1,7 +1,7 @@
 import { createContext, useContext, useReducer } from "react"
 
-import { IUser } from "types/schemas/User"
-import { types } from "types/utils/providers"
+import { IUser } from "../../types/schemas/User"
+import { types } from "../../types/utils/providers"
 import accountReducer from "./accountReducer"
 
 const initialState = {
@@ -14,7 +14,7 @@ const initialValues = {
   isLoading: true,
   isLoggedIn: false,
   user: null,
-  handleSetUser: (user) => {},
+  handleSetUser: (user: any) => {},
 }
 
 const AccountContext = createContext(initialValues)

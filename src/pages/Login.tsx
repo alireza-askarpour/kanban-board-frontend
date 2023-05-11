@@ -1,13 +1,17 @@
-import LoginForm from "components/Forms/LoginForm"
-import { Helmet } from "components/Shared"
+import LoginForm from "../components/Forms/LoginForm"
+import AuthLayout from "../components/Layouts/AuthLayout"
+import { Helmet } from "../components/Shared"
 
 const Login = () => {
   return (
-    <Helmet title="Login page">
-      <div className="grid place-items-center min-h-screen bg-gray-50">
-        <LoginForm />
-      </div>
-    </Helmet>
+    <AuthLayout>
+      <Helmet title="Login page">
+        <div className="grid place-items-center min-h-screen bg-gray-50">
+          <LoginForm />
+          test
+        </div>
+      </Helmet>
+    </AuthLayout>
   )
 }
 

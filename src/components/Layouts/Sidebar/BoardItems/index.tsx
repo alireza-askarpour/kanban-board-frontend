@@ -3,8 +3,8 @@ import { Link } from "react-router-dom"
 
 import BoardItem from "./BoardItem"
 
-import { classNames } from "utils"
-import { IProps } from "types/components/BoardItems"
+import { classNames } from "../../../../utils"
+import { IProps } from "../../../../types/components/BoardItems"
 
 const BoardItems = ({ heading, boards }: IProps) => {
   const [hideItems, setHideItems] = useState(false)

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
-import { Outlet, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
-import { useAccount } from "providers/Account/AccountProvider"
-import { authUtils } from "utils"
+import { useAccount } from "../../providers/Account/AccountProvider"
+import { authUtils } from "../../utils"
 
 import Sidebar from "./Sidebar"
-import AppLoadingView from "views/app/AppLoadingView"
+import AppLoadingView from "../../views/app/AppLoadingView"
 
-const MainLayout = () => {
+const MainLayout = ({ children }: any) => {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(true)
 
@@ -33,7 +33,7 @@ const MainLayout = () => {
       <Sidebar />
       <div className="max-h-screen overflow-y-auto flex-1">
         <div className="min-h-screen">
-          <Outlet />
+          {children}
         </div>
       </div>
     </section>
