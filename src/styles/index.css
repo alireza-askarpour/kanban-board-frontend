@@ -67,6 +67,10 @@
   input {
     @apply focus:outline-none;
   }
+
+  ::selection {
+    @apply bg-[#C2DCF7];
+  }
 }
 
 @layer components {

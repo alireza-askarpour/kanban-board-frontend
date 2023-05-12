@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
-import { IProps } from "../../../types/components/Button"
-import { classNames } from "../../../utils/classNames"
+import { classNames } from "../../../utils"
+import { Props } from "../../../types/components/Button"
 
 const Button = ({
   children,
@@ -14,8 +14,9 @@ const Button = ({
   rightIcon,
   size = "medium",
   type,
-  variant,
-}: IProps) => {
+  variant = "primary",
+  rounded,
+}: Props) => {
   const handleClickButton = () => {
     if (!disabled && !loading && typeof onClick === "function") {
       onClick()
@@ -23,15 +24,19 @@ const Button = ({
   }
 
   // Wrap all element props in a single object.
-  const elementProps = {
+  const elementProps: any = {
     type: href ? null : type || "button",
     onClick: handleClickButton,
     disabled: disabled,
     className: classNames(
-      "appearance-none relative text-center inline-block rounded-lg overflow-hidden cursor-pointer select-none transition duration-150 ease-in-out transform border border-transparent",
+      "appearance-none flex relative text-center inline-block overflow-hidden cursor-pointer select-none transition duration-150 ease-in-out transform border",
+
+      typeof rounded === "number" && rounded,
+      rounded === "full" && "rounded-full",
+      !rounded && "rounded-md",
 
       disabled && "cursor-not-allowed opacity-75",
-      leftIcon || rightIcon ? "space-x-2 space-x-reverse" : null,
+      leftIcon || (rightIcon && "space-x-2 space-x-reverse"),
 
       variant === "primary" && "text-white bg-primary hover:bg-primaryHover active:bg-primaryActive",
       variant === "danger" && "text-white bg-secondary hover:bg-secondaryHover active:bg-secondaryActive",
@@ -39,9 +44,9 @@ const Button = ({
       variant === "outline-primary" && "text-primary border-primary hover:bg-primary/5 active:bg-primary/10",
       variant === "outline-danger" && "text-secondary border-secondary hover:bg-secondary/5 active:bg-secondary/10",
 
-      size === "large" && "px-6 py-3.5",
-      size === "medium" && "px-4 py-2",
-      size === "small" && "px-2 py-1.5 text-sm",
+      size === "large" && "px-4 py-2",
+      size === "medium" && "px-4 py-2 text-sm",
+      size === "small" && "px-3 py-1.5 text-sm",
 
       className,
     ),
@@ -81,15 +86,15 @@ const Button = ({
 
   const elementChildren = (
     <>
-      {rightIcon}
-      <span>{children}</span>
       {leftIcon}
+      <span>{children}</span>
+      {rightIcon}
       {loadingContent}
     </>
   )
 
   return href ? (
-    <Link to={href} {...elementProps}>
+    <Link href={href} {...elementProps}>
       {elementChildren}
     </Link>
   ) : (
