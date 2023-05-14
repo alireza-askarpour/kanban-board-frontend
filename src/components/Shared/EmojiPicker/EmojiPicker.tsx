@@ -5,7 +5,7 @@ import Picker from "emoji-picker-react"
 import { useOnClickOutside } from "../../../hooks"
 
 const EmojiPicker = ({ icon, onChange }) => {
-  const [selectedEmoji, setSelectedEmoji] = useState("")
+  const [selectedEmoji, setSelectedEmoji] = useState("💯")
   const [open, setOpen] = useState(false)
 
   const onOpen = () => setOpen(true)
@@ -16,7 +16,7 @@ const EmojiPicker = ({ icon, onChange }) => {
   useOnClickOutside(ref, onClose)
 
   useEffect(() => {
-    setSelectedEmoji(icon)
+    // setSelectedEmoji(icon)
   }, [icon])
 
   const handleSelectEmoji = (e: any, emojiObject: any) => {
@@ -25,9 +25,9 @@ const EmojiPicker = ({ icon, onChange }) => {
   }
 
   return (
-    <div className="relative">
+    <div className="relative grid place-items-center">
       <button
-        className="text-5xl cursor-pointer"
+        className="text-3xl cursor-pointer"
         onClick={onOpen}
         style={{
           pointerEvents: open ? 'none' : 'auto',

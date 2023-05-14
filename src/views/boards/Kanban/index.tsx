@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { ChangeEvent, useEffect, useState } from "react"
 import toast, { Toaster } from "react-hot-toast"
+import TextareaAutosize from "react-textarea-autosize"
 import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd"
 
 import { classNames } from "../../../utils"
@@ -112,40 +113,46 @@ const Kanban = (props: any) => {
   return (
     <>
       <section>
-        <div className="flex items-center justify-between">
-          <Button variant="outline-primary" size="small" onClick={handleCreateSection}>
-            Add section
+        <div className="flex items-center justify-between px-4 sm:px-8 lg:px-14">
+          <p className="text-xs text-[#37352fa6] font-bold">{data.length} SECTIONS</p>
+          <Button variant="primary" size="small" onClick={handleCreateSection}>
+            New section
           </Button>
-          <p className="text-sm mr-10 text-gray-800">{data.length} Sections</p>
         </div>
 
-        <hr className="my-3" style={{ margin: "12px 0" }} />
+        <hr className="my-3 color-[#E9E9E7]" style={{ margin: "12px 0" }} />
 
         <DragDropContext onDragEnd={handleDragEnd}>
-          <section className="flex items-start w-full overflow-x-auto space-x-4 min-h-[384px]">
+          <section className="px-4 sm:px-8 lg:px-14 space-x-2.5 flex items-start w-full overflow-x-auto min-h-[384px]">
             {data.map((section) => (
               <div key={section._id} className="w-80">
                 <Droppable key={section._id} droppableId={section._id}>
-                  {(provided) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.droppableProps}
-                      className="w-80 p-2.5 bg-gray-100 rounded-lg space-y-2.5 mb-4"
-                    >
-                      <div className="flex items-center justify-between py-2 px-3.5 bg-primary rounded-lg">
-                        <input
-                          type="text"
+                  {(provided: any) => (
+                    <div ref={provided.innerRef} {...provided.droppableProps} className="w-72 space-y-1.5 px-1 group">
+                      <div className="flex items-start justify-between group">
+                        <TextareaAutosize
                           value={section.title}
-                          className="flex-1 outline-none bg-primary text-white placeholder:text-gray-300"
                           placeholder="Untitled"
                           onChange={(e) => handleUpdateSectionTitle(e, section._id)}
+                          className="flex-1 resize-none outline-none px-1 rounded-md transition duration-150 border-2 cursor-pointer border-transparent focus:cursor-text focus:border-primary text-sm py-2 text-[#37352f] placeholder:text-[#37352f80]"
                         />
-                        <button onClick={() => handleCreateTask(section._id)} className="mr-1">
-                          <Icon name="plus" stroke="white" size={25} />
-                        </button>
-                        <button onClick={() => handleDeleteSection(section._id)}>
-                          <Icon name="trash" stroke="white" size={19} />
-                        </button>
+                        <div className="flex items-start my-2 transition duration-150 opacity-0 group-hover:opacity-100">
+                          <button
+                            onClick={() => handleCreateTask(section._id)}
+                            className="w-6 h-6 grid place-items-center rounded-[3px] hover:bg-[#EFEFEF] active:bg-[#37352f29]"
+                          >
+                            <Icon name="more-horizontal" stroke="gray" size={19} />
+                          </button>
+                          <button
+                            onClick={() => handleDeleteSection(section._id)}
+                            className="w-6 h-6 grid place-items-center rounded-[3px] hover:bg-[#EFEFEF] active:bg-[#37352f29]"
+                          >
+                            <Icon name="plus" stroke="gray" size={18} />
+                          </button>
+                        </div>
+                        <span className="text-[#37352f80] pr-1 leading-10 transition duration-150 text-sm group-hover:opacity-0">
+                          {section.tasks.length}
+                        </span>
                       </div>
                       {/* tasks */}
                       {section.tasks.map((task: any, index: number) => (
@@ -157,11 +164,16 @@ const Kanban = (props: any) => {
                               {...provided.dragHandleProps}
                               onClick={() => setSelectedTask(task)}
                               className={classNames(
-                                "p-3 bg-white text-gray-700 rounded-lg",
-                                snapshot.isDragging ? "shadow-2xl" : "shadow-sm",
+                                "py-2.5 px-2 bg-white text-sm shadow-[0px_0px_0px_1px_#0f0f0f1a,0px_2px_4px_#0f0f0f1a] text-[#37352f] rounded-md",
+                                // snapshot.isDragging ? "shadow-2xl" : "shadow-sm",
                               )}
                             >
-                              <span className="line-clamp-1 select-none">
+                              <span
+                                className={classNames(
+                                  "line-clamp-1 select-none",
+                                  task.title === "" && "text-[#37352f80]",
+                                )}
+                              >
                                 {task.title === "" ? "Untitled" : task.title}
                               </span>
                             </div>
