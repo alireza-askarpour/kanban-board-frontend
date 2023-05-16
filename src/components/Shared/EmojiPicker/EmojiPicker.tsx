@@ -1,12 +1,20 @@
 import { useState, useEffect, useRef } from "react"
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion"
 import Picker from "emoji-picker-react"
 
 import { useOnClickOutside } from "../../../hooks"
+import { classNames } from "../../../utils"
 
-const EmojiPicker = ({ icon, onChange }) => {
-  const [selectedEmoji, setSelectedEmoji] = useState("💯")
-  const [open, setOpen] = useState(false)
+interface Props {
+  open: boolean
+  icon: string
+  className: string
+  setOpen: any
+  onChange: (icon: string) => void
+}
+
+const EmojiPicker = ({ icon, open, setOpen, onChange, className }: Props) => {
+  const [selectedEmoji, setSelectedEmoji] = useState("")
 
   const onOpen = () => setOpen(true)
   const onClose = () => setOpen(false)
@@ -16,21 +24,21 @@ const EmojiPicker = ({ icon, onChange }) => {
   useOnClickOutside(ref, onClose)
 
   useEffect(() => {
-    // setSelectedEmoji(icon)
+    setSelectedEmoji(icon)
   }, [icon])
 
-  const handleSelectEmoji = (e: any, emojiObject: any) => {
+  const handleSelectEmoji = (e: any) => {
+    onChange(e.emoji)
     onClose()
-    onChange(emojiObject.emoji)
   }
 
   return (
     <div className="relative grid place-items-center">
       <button
-        className="text-3xl cursor-pointer"
+        className={classNames("text-3xl cursor-pointer", className)}
         onClick={onOpen}
         style={{
-          pointerEvents: open ? 'none' : 'auto',
+          pointerEvents: open ? "none" : "auto",
         }}
       >
         {selectedEmoji}
@@ -38,27 +46,26 @@ const EmojiPicker = ({ icon, onChange }) => {
 
       <motion.div
         style={{
-          boxShadow: '0 4px 24px 0 rgb(0 0 0 / 24%)',
+          boxShadow: "0 4px 24px 0 rgb(0 0 0 / 24%)",
         }}
         className="left-2 md:left-4 absolute z-20 mt-2 rounded-[4px] overflow-hidden"
         initial="hide"
         ref={ref}
-        animate={open ? 'show' : 'hide'}
-        transition={{ duration: 0.25, type: 'tween' }}
+        animate={open ? "show" : "hide"}
+        transition={{ duration: 0.25, type: "tween" }}
         variants={{
-          show: { opacity: 1, display: 'flex', flexDirection: 'column', y: 13 },
+          show: { opacity: 1, display: "flex", flexDirection: "column", y: 13 },
           hide: {
             opacity: 0,
             y: 26,
-            flexDirection: 'column',
-            transitionEnd: { display: 'none' },
+            flexDirection: "column",
+            transitionEnd: { display: "none" },
           },
         }}
       >
-       <Picker onEmojiClick={handleSelectEmoji} />
+        <Picker onEmojiClick={handleSelectEmoji} />
       </motion.div>
     </div>
-
   )
 }
 

@@ -165,7 +165,6 @@ const Kanban = (props: any) => {
                               onClick={() => setSelectedTask(task)}
                               className={classNames(
                                 "py-2.5 px-2 bg-white text-sm shadow-[0px_0px_0px_1px_#0f0f0f1a,0px_2px_4px_#0f0f0f1a] text-[#37352f] rounded-md",
-                                // snapshot.isDragging ? "shadow-2xl" : "shadow-sm",
                               )}
                             >
                               <span

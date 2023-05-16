@@ -72,3 +72,12 @@ export const updateFavouritePositionBoards = async (boards: IBoard[]) => {
     return { success: false, error }
   }
 }
+
+export const uploadCover = async (boardId: string) => {
+  try {
+    const { data } = await http.get(`boards/upload-cover/${boardId}`)
+    return { success: true, favourites: data }
+  } catch (error) {
+    return { success: false, error }
+  }
+}
