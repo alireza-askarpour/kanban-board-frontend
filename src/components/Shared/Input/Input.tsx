@@ -28,7 +28,27 @@ const Input = (props: IProps) => {
         name={props.name}
         type={inputType}
         placeholder={props.placeholder}
-        className={classNames(styles.Input, props.inputClassName)}
+        className={classNames(
+          props.inputClassName,
+          "w-full bg-white outline-none text-gray-800 transition duration-100 ease-in-out border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary",
+
+          props.rounded === "none" && "rounded-none",
+          props.rounded === "sm" && "rounded-sm",
+          props.rounded === "md" && "rounded-md",
+          props.rounded === "lg" && "rounded-lg",
+          props.rounded === "xl" && "rounded-xl",
+          props.rounded === "2xl" && "rounded-2xl",
+          props.rounded === "3xl" && "rounded-3xl",
+          props.rounded === "full" && "rounded-full",
+
+          props.size === "small" && "py-1.5 px-3 text-sm",
+          props.size === "medium" && "py-2 px-4 text-sm",
+          props.size === "large" && "py-2 px-4 text-base",
+
+          props.placeholderColor === "light" && "placeholder-gray-400",
+          props.placeholderColor === "medium" && "placeholder-gray-500",
+          props.placeholderColor === "dark" && "placeholder-gray-600",
+        )}
         value={props.value}
         onChange={props.onChange}
         {...props.register}

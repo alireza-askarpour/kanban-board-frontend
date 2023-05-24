@@ -2,10 +2,6 @@
   @apply relative;
 }
 
-.Input {
-  @apply w-full px-4 py-2 bg-white text-sm rounded-lg outline-none placeholder-gray-500 text-gray-800 transition duration-100 ease-in-out border border-gray-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600;
-}
-
 .FormControl > span {
   @apply grid place-items-center absolute top-1/2 transform -translate-y-1/2;
 }

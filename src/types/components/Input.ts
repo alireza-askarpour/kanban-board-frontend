@@ -9,6 +9,10 @@ export interface IProps {
   disabled?: boolean
   icon?: any
   status?: "success" | "error"
+  size?: "small" | "medium" | "large"
+  rounded?: "none" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full"
+  placeholderColor?: "light" | "medium" | "dark"
+
   register?: any
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
