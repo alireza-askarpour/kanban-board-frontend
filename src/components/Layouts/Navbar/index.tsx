@@ -1,4 +1,5 @@
 import { Icon } from "../../Shared"
+import ShareDropdown from "./ShareDropdown"
 
 interface Props {
   isFavourite: boolean
@@ -23,9 +24,7 @@ const Navbar = ({ isFavourite, onOpenSideDrawer, onDeleteBoard, onAddFavourite }
         </div>
 
         <div className="flex items-center">
-          <button className="h-7 font-bold text-sm leading-7 px-2 cursor-pointer select-none transition hover:bg-[#EFEFEF] rounded-[4px]">
-            Share
-          </button>
+          <ShareDropdown />
           <button
             className="h-7 w-[33px] grid place-items-center cursor-pointer transition hover:bg-[#EFEFEF] rounded-[4px]"
             onClick={onAddFavourite}

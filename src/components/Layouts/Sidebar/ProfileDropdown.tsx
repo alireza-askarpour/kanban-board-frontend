@@ -32,7 +32,7 @@ const ProfileDropdown = () => {
           open && "pointer-events-none",
         )}
       >
-        <Avatar size={24} variant="square" className="mr-2">
+        <Avatar size={24} variant="primary" className="mr-2 rounded-[4px]">
           {getFirstCharacter("S")}
         </Avatar>
         <span className="font-bold mr-1.5 text-sm select-none text-gray-700 line-clamp-1 flex-1">
@@ -77,7 +77,7 @@ const ProfileDropdown = () => {
 
           <div className="pb-2.5 pt-1">
             <div className="flex px-3 py-2 cursor-pointer transition-colors hover:bg-[#ebebea]" onClick={onClose}>
-              <Avatar size={35} variant="square" className="mr-2" fontSize={20}>
+              <Avatar size={35} variant="primary" className="mr-2 rounded-[4px]" fontSize={20}>
                 {getFirstCharacter("S")}
               </Avatar>
               <div className="flex-1">
@@ -87,7 +87,7 @@ const ProfileDropdown = () => {
             </div>
 
             <div className="flex px-3 py-2 cursor-pointer transition-colors hover:bg-[#ebebea]" onClick={onClose}>
-              <Avatar size={35} variant="square" className="mr-2" fontSize={20}>
+              <Avatar size={35} variant="primary" className="mr-2 rounded-[4px]" fontSize={20}>
                 {getFirstCharacter("S")}
               </Avatar>
               <div>
