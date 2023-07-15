@@ -1,6 +1,6 @@
 ## Preview
 
-![Kanban Board - Alireza Askarpour](https://i.ibb.co/VqWRD41/Kanban-board.png)
+![Kanban Board - Alireza Askarpour](https://i.ibb.co/6BD8g0z/Screenshot-from-2023-05-19-05-28-49.png)
 
 ## Features
 
